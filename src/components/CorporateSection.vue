@@ -1,13 +1,14 @@
 <template lang="pug">
     section#corporate-section.page-section
-        h2.block-letters
-            span.line.small Let
-            span.line.big Customers
-            span.line.big Find You
-            span.line.medium Wherever they are
-        p.title-text
-            | Lorem Ipsum is simply dummy text of the printing and typesetting industry. 
-            | Lorem Ipsum has been the industry's standard dummy text
+        .title-group
+            h2.block-title
+                span.line.small Let
+                span.line.big Customers
+                span.line.big Find You
+                span.line.medium Wherever they are
+            p.title-text
+                | Lorem Ipsum is simply dummy text of the printing and typesetting industry. 
+                | Lorem Ipsum has been the industry's standard dummy text
 </template>
 <script>
 export default {}
