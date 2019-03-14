@@ -21,6 +21,7 @@ $item-height: 2em
 $font-size: 24px
 
 nav#main-nav
+    z-index: 55
     text-transform: uppercase
     font-size: $font-size
     display: flex

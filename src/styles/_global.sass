@@ -10,13 +10,19 @@ ul
 
 .page-section
     box-sizing: border-box
-
+    position: relative
+    &.padded
+        padding: 100px
 
 .block-letters
     font-family: impact, sans-serif
     font-weight: bold
+    letter-spacing: 1px
 
 h2.block-title
+    @extend .block-letters
+
+    transform: scaleY(1.2)
     $space: .5em
     margin: $space 0
     .line
@@ -30,6 +36,7 @@ h2.block-title
     .medium
         font-size: 48px
         margin-top: $space
+        letter-spacing: 6px
     .big
         font-size: 100px // out of proportion so it feels 'too big'
         text-transform: uppercase
@@ -42,3 +49,4 @@ h2.block-title
 .title-text
     font-size: 24px
     font-weight: lighter
+    transform: scaleY(1.2) translateY(20px)
