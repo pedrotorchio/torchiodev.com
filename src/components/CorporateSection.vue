@@ -25,7 +25,7 @@ export default {}
     max-height: 100vh
     padding-top: $size--header-height
 .title-text
-    width: 550px // largura aproximada e aumentada da palavra CUSTOMERS ((9 letras + 1) * font-size/2)
+    width: 550px // approximated and expanded width of the word 'CUSTOMERS' ((9 letters + 1) * font-size/2)
 </style>
 
 
