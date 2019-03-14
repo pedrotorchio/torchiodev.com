@@ -9,6 +9,7 @@
     "test:unit": "vue-cli-service test:unit --watch"
   },
   "dependencies": {
+    "@material/elevation": "^1.0.0",
     "normalize.css": "^8.0.1",
     "vue": "^2.6.6",
     "vue-router": "^3.0.1"
