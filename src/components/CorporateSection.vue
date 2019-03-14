@@ -10,8 +10,7 @@ export default {}
 #corporate-section
     $lightness: lightness($color--main-light)
     $diff: 95% - $lightness
-    $bg-blue: lighten($color--main-light, $diff)
-
+    $bg-blue: #f2f6ff
     background: radial-gradient(circle 60vw at left top, white 0%, #{$bg-blue} 100%)
     background-position: left top
 #corporate-section
