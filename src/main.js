@@ -9,7 +9,4 @@ Vue.config.productionTip = false
 new Vue({
   router,
   render: h => h(App),
-  mounted() {
-    this.$el.classList.add('mounted');
-  }
 }).$mount('#app')
