@@ -32,14 +32,17 @@
     position: relative
 
     img
-        margin-left: -250px
+        margin: 0 auto
+        display: block
         z-index: 9
+        height: 400px
     .btn
         width: 250px
         line-height: 1.5em
         text-align: center
         margin: 0 auto
-        font-size: 40px
+        margin-top: 1em
+        font-size: 36px
         font-weight: lighter
         text-transform: uppercase
         background: $color--maroon
