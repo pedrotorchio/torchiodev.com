@@ -23,7 +23,7 @@ export default {
                 li( v-for = "customer in allCustomers" )
                     demo-costumer-item.mdc-elevation--z1( :customer = "customer" )
 
-        footer.mdc-elevation--z2 +
+        button.mdc-elevation--z2 +
         
 
 
@@ -41,25 +41,29 @@ $header-height: 28px
 $ul-margin-top: 14px
 $header-margin-bottom: 4px
 
-footer, header
+button, header
     $height: $header-height
     height: $height
     line-height: $height
     color: white
     text-align: center
+    margin: 0
 header
 
     background: $color--text-dark
     margin-bottom: $header-margin-bottom
-footer
+button
+    display: block
+    font-weight: bold
     background: $color--maroon
-    margin-top: $header-margin-bottom
     font-size: 36px
+    width: 100%
+    
 
 .content
     overflow-y: auto
     overflow-x: hidden
-    $space: $header-margin-bottom * 2
+    $space: $header-margin-bottom
     height: calc(100% - #{$space} - #{$header-height * 2})
 
     &::-webkit-scrollbar
@@ -74,6 +78,7 @@ footer
         outline: none
 ul
     margin-bottom: $header-margin-bottom
+    margin-top: $header-margin-bottom
 li
     display: block
 
