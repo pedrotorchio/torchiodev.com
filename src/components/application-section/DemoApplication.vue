@@ -58,7 +58,7 @@ button
     background: $color--maroon
     font-size: 36px
     width: 100%
-    
+    cursor: pointer
 
 .content
     overflow-y: auto
