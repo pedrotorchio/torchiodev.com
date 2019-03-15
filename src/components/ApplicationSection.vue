@@ -4,8 +4,14 @@
             .screen-1.mdc-elevation--z2
             .screen-2.mdc-elevation--z2
             .phone
+                img( src="@/assets/imgs/application/phone-big.png" )
+                .phone-screen
+                    demo-application
+            .tip
+                svg-loader( name="tip-arrow" )
+                h3.textual-tip Try this demo
+
         .title-group
-        
             h2.block-title
                 span.line.big Transform
                 span.line.big Your Work
@@ -14,7 +20,21 @@
             p.title-text
                 | It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, 
 </template>
+<script>
+import '@/components/svg/tip-arrow'
+import DemoApplication from './application-section/DemoApplication'
+import customers from './application-section/CustomerStore'
+
+export default {
+    components: { DemoApplication },
+    data: () => ({
+        customers
+    }),
+}
+</script>
+
 <style lang="sass" scoped>
+@import "~@/styles/config"
 #application-section
     $bg-blue: #f2f6ff
     background: radial-gradient(circle 60vw at left bottom, white 0%, #{$bg-blue} 100%)
@@ -34,4 +54,36 @@
     background: white
 .title-text
     width: 450px
+.phone
+    position: absolute
+    bottom: 0
+    z-index: 99
+.phone-screen
+    height: 233px
+    width: 134px
+    background: white
+    position: absolute
+    z-index: 99
+    bottom: 124px
+    left: 121.5px
+    overflow: hidden    
+
+.tip
+    position: absolute
+    z-index: 999
+    left: 330px
+    bottom: 20px
+
+    svg
+        height: 50px
+
+    .textual-tip
+        position: absolute
+        font-weight: lighter
+        width: 130px
+        bottom: 0
+        margin: 0
+        color: rgba($color--text-dark, .8)
+        left: 50px
+
 </style>

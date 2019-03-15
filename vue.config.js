@@ -2,7 +2,7 @@ module.exports = {
     css: {
       loaderOptions: {
         sass: {
-            includePaths: ["./node_modules"]
+            includePaths: ["./node_modules"],            
         },
       }
     }
