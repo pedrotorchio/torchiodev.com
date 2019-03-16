@@ -50,57 +50,65 @@ export default {
         }
     },
     methods: {
+        enterData(arcs) {
+            const
+                // Gs 
+                enterArcs = arcs.enter()
+                    .append("g")
+                    .each(function(d) {
+                        this.classList.add(`arc`)
+                        this.classList.add(`${getGenderLabelAndColor(d.data.gender).label}-${d.data.gender}`)
+                        this.classList.add(`count-${d.data.count}`)
+                    }),
+
+                // PATHs
+                enterPaths = enterArcs                
+                    .append("path")
+                    .style("fill", c => getGenderLabelAndColor(c.data.gender).color ),
+
+                // TEXTs
+                enterTexts = enterArcs
+                    .append("text")
+                    .attr("transform", d => `translate(${this.arcGenerator.centroid(d)})`)
+                    .attr("text-anchor", "middle")
+                    .attr("dominant-baseline", "central")
+                    .attr("fill", "white")     
+                    .attr("font-size", "24px")
+                    .text(d => getGenderLabelAndColor(d.data.gender).label.charAt(0));
+                
+                // ANIMATION
+                enterPaths
+                    .transition()
+                            .ease(d3Easing)
+                            .duration(d => (d.endAngle - d.startAngle) * 1500)
+                            .delay((d,i) => i * 150)
+                        .attrTween("d", b => {
+                            const i = d3Interpolate({ startAngle: b.startAngle, endAngle: b.startAngle }, b);
+                            return t => this.arcGenerator(i(t))
+                        })
+
+                return enterArcs
+        },
         updateChart() {
+            console.log(this.pieGenerator(this.groupedGenders));
             const 
                 chartGroup = d3Select(this.$refs["chart-group"]),
                 arcs = chartGroup.selectAll('.arc')
-                    .data(this.pieGenerator(this.groupedGenders))
-
-                    .enter().append("g")
-                    .attr("class", "arc")
-                    .each(function(d) {
-                        this.classList.add(`${getGenderLabelAndColor(d.data.gender).label}-${d.data.gender}`)
-                        this.classList.add(`count-${d.data.count}`)
-                    })
-
-            arcs
-                .append("path")
-                // .attr("d", this.arcGenerator)
-                .style("fill", c => getGenderLabelAndColor(c.data.gender).color )
-
-                .transition()
-                        .ease(d3Easing)
-                        .duration(2000)
-                    .attrTween("d", b => {
-                        const i = d3Interpolate({ startAngle: 0, endAngle: 0 }, b);
-                        return t => this.arcGenerator(i(t))
-                    })
-                .transition()
-                        .ease(d3Easing)
-                        .delay((d,i) => 2000 + i * 50)
-                        .duration(750)
-                    .attrTween("d", b => {
-                        var i = d3Interpolate({ innerRadius: 0 }, b);
-                        return t => this.arcGenerator(i(t))
-                    });
+                    .data(this.pieGenerator(this.groupedGenders), d => d.data.gender),
                 
-                
-            arcs
-                .append("text")
-                .attr("transform", d => `translate(${this.arcGenerator.centroid(d)})`)
-                .attr("text-anchor", "middle")
-                .attr("dominant-baseline", "central")
-                .attr("fill", "white")     
-                .attr("font-size", "24px")
-                .text(d => getGenderLabelAndColor(d.data.gender).label.charAt(0));
+                enterArcs = this.enterData(arcs)
         }
     },
     mounted() {
         this.updateChart()
     },
     watch: {
-        customers() {
-            this.updateChart()
+        groupedGenders: {
+            deep: true,
+            handler() {
+                console.log("changed")
+                this.updateChart()
+            }
         }
     }
 }
