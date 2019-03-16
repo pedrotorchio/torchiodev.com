@@ -2,6 +2,9 @@
     section#application-section.page-section.padded
         .app-section
             .screen-1.mdc-elevation--z2
+                #pie-chart
+                    demo-pie-chart( :size="250" :customers="dataset" )
+                #bar-chart
             .screen-2.mdc-elevation--z2
             .phone
                 img( src="@/assets/imgs/application/phone-big.png" )
@@ -23,13 +26,21 @@
 <script>
 import '@/components/svg/tip-arrow'
 import DemoApplication from './application-section/DemoApplication'
+import GenderChartMixin from './application-section/GenderChart.mixin'
+
 import customers from './application-section/CustomerStore'
 
 export default {
     components: { DemoApplication },
+    mixins: [ GenderChartMixin ],
     data: () => ({
         customers
     }),
+    computed: {
+        dataset() {
+            return customers.getDataset()
+        }
+    }
 }
 </script>
 
