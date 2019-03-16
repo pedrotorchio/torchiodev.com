@@ -2,9 +2,9 @@ import Faker from 'faker'
 import Vue from 'vue'
 
 export const genderDataset = {
-    0: { label: "Unspecified", color: "#7a2660" },
-    1: { label: "Male", color: "#0a2d5c" },
-    2: { label: "Female", color: "#d00000" }
+    0: { label: "Unspecified", color: "#81c200" },
+    1: { label: "Male", color: "#ffc107" },
+    2: { label: "Female", color: "#FF5722" }
 }
 export const satisfactionRange = [30, 100]
 export const satisfactionMaxStep = 20

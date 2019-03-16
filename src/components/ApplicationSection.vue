@@ -2,9 +2,10 @@
     section#application-section.page-section.padded
         .app-section
             .screen-1.mdc-elevation--z2
-                #pie-chart
+                #pie-chart.screen-half
                     demo-pie-chart( :size="250" :customers="dataset" )
-                #bar-chart
+                    h3 Gender
+                #bar-chart.screen-half
             .screen-2.mdc-elevation--z2
             .phone
                 img( src="@/assets/imgs/application/phone-big.png" )
@@ -96,5 +97,15 @@ export default {
         margin: 0
         color: rgba($color--text-dark, .8)
         left: 50px
-
+.screen-1
+    display: flex
+    h3
+        position: absolute
+        bottom: 0
+        left: 0
+        margin: .5em
+.screen-half
+    display: block
+    position: relative
+    width: 50%
 </style>

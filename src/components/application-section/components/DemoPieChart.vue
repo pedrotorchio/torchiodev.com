@@ -16,6 +16,15 @@ export default {
         size: Number
     },
     computed: {
+        groupedGenders() {
+            return this.customers
+            .reduce((partitions, customer) => {
+
+                partitions[customer.gender].count++;
+                return partitions
+
+            }, [{ gender: 0, count: 0 }, { gender: 1, count: 0 }, { gender: 2, count: 0 }])
+        },
         arcGenerator(){
             return d3Arc()
                 .outerRadius(this.radius)
@@ -23,34 +32,47 @@ export default {
         },
         pieGenerator() {
             return d3Pie()
-                .sort(null)
-                .value(d => d.gender)
+                .value(d => d.count)
         },
         width() {
-            return this.radius
+            return this.size
         },
         height() {
-            return this.radius
+            return this.size
         },
         radius() {
-            return this.size
+            return this.size / 3
         }
     },
     mounted() {
         const 
             chartGroup = d3Select(this.$refs["chart-group"]),
             arcs = chartGroup.selectAll('.arc')
-                .data(this.pieGenerator(this.customers))
+                .data(this.pieGenerator(this.groupedGenders))
                 .enter().append("g")
                 .attr("class", "arc")
+                .each(function(d) {
+                    this.classList.add(`${getGenderLabelAndColor(d.data.gender).label}-${d.data.gender}`)
+                    this.classList.add(`count-${d.data.count}`)
+                })
 
             arcs
                 .append("path")
                 .attr("d", this.arcGenerator)
-                .style("fill", c => getGenderLabelAndColor(c.value).color )
-            // arcs
-            //     .appnd("text")
-            //     .attr("transform", d => `translate`)
+                .style("fill", c => getGenderLabelAndColor(c.data.gender).color )
+                
+                
+            arcs.append("text")
+                .attr("transform", d => {
+                    d.innerRadius = 0;
+                    d.outerRadius = this.radius;
+                    return "translate(" + this.arcGenerator.centroid(d) + ")";
+            })
+            .attr("text-anchor", "middle")
+            .attr("fill", "white")     
+            .attr("font-size", "24px")
+            .attr("text-shadow", "1px 0 10px black")
+            .text(d => getGenderLabelAndColor(d.data.gender).label.charAt(0));
         
     }
 }
