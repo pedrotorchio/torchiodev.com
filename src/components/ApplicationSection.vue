@@ -10,6 +10,7 @@
                     h3 Age
 
             .screen-2.mdc-elevation--z2
+                demo-line-chart( :customers="dataset" :height="250" :width="500" :padding="10" )
             .phone
                 img( src="@/assets/imgs/application/phone-big.png" )
                 .phone-screen
@@ -32,12 +33,13 @@ import '@/components/svg/tip-arrow'
 import DemoApplication from './application-section/DemoApplication'
 import GenderChartMixin from './application-section/GenderChart.mixin'
 import AgeChartMixin from './application-section/AgeChart.mixin'
+import SatisfactionChartMixin from './application-section/SatisfactionChart.mixin'
 
 import customers from './application-section/CustomerStore'
 
 export default {
     components: { DemoApplication },
-    mixins: [ GenderChartMixin, AgeChartMixin ],
+    mixins: [ GenderChartMixin, AgeChartMixin, SatisfactionChartMixin ],
     data: () => ({
         customers
     }),
@@ -73,6 +75,7 @@ export default {
 .phone
     position: absolute
     bottom: 0
+    left: 0
     z-index: 99
 .phone-screen
     height: 233px

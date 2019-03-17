@@ -40,7 +40,7 @@ li
     
     span
         color: white
-        line-height: 2em
+        line-height: 1
         text-shadow: 1px 0px 2px $color
 
 .domain, .bars

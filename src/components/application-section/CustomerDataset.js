@@ -58,7 +58,7 @@ export default class CustomerDataset {
 }
 
 export function getGenderUidByLabel(label) {
-    return Object.entries(genderDataset).findIndex(([key, value]) => value.label == label)
+    return +Object.entries(genderDataset).findIndex(([key, value]) => value.label == label)
 }
 export function getGenderLabelAndColor(numeric) {
     return genderDataset[numeric];
@@ -84,12 +84,12 @@ export function getNextSatisfactionPoint(curr) {
     const [ min, max ] = satisfactionRange
 
     let 
-        step = Math.random() * satisfactionMaxStep;
+        step = Math.random() * satisfactionMaxStep + 10;
 
-    const shouldGoDown = () => Math.floor(Math.random() * 10) % 3 == 0
+    const shouldGoDown = () => Math.floor(Math.random() * 10) % 2 == 0
     const isTooLow = val => val < ((max - min)/2 + min)
-    const increase = val => val * 1.5
-    const decrease = val => val * .5
+    const increase = val => val * 2
+    const decrease = val => val * 1
     const keepWithinRange = val => Math.min(Math.max(val, min), max)
 
     if (curr == max)
@@ -100,13 +100,13 @@ export function getNextSatisfactionPoint(curr) {
         step = -decrease(step)
     
     
-    return keepWithinRange(curr + step)
+    return Math.floor(keepWithinRange(curr + step))
 }
 export function makeSatisfactionProgression(count) {
     const initial = Math.random() * satisfactionRange[1]
-    let values = []
+    let values = [0]
     for(let i = 0 ; i < count ; i++) {
-        values[i] = getNextSatisfactionPoint(values[i-1])
+        values.push(getNextSatisfactionPoint(values[i-1]))
     }
     return values
 } 
