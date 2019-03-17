@@ -11,6 +11,7 @@
 
             .screen-2.mdc-elevation--z2
                 demo-line-chart( :customers="dataset" :height="250" :width="500" :padding="10" )
+                h3 Satisfaction Level
             .phone
                 img( src="@/assets/imgs/application/phone-big.png" )
                 .phone-screen
@@ -65,6 +66,7 @@ export default {
     flex: 0 1 auto
     
 .screen-1, .screen-2
+    position: relative
     margin: 50px auto
     $w: 500px
     width: $w
@@ -78,7 +80,7 @@ export default {
     left: 0
     z-index: 99
 .phone-screen
-    height: 233px
+    height: 234px
     width: 134px
     background: white
     position: absolute
@@ -90,11 +92,12 @@ export default {
 .tip
     position: absolute
     z-index: 999
-    left: 330px
+    left: 240px
     bottom: 20px
 
     svg
         height: 50px
+        fill: $color--text-dark
 
     .textual-tip
         position: absolute
@@ -106,11 +109,17 @@ export default {
         left: 50px
 .screen-1
     display: flex
+    
+
+.screen-1, .screen-2
     h3
         position: absolute
         bottom: 0
         left: 0
         margin: .5em
+.screen-2 h3
+    right: 0
+    left: auto
 .screen-half
     display: block
     position: relative

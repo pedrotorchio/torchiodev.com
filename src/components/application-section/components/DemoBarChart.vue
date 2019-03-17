@@ -7,11 +7,11 @@
                 span.average-age( :style="{ left: `${xScale(averageAge)}%` }") Avg: {{averageAge}}
             ul.bars
                 li.young( :style="{ height: `${scale(youngPartition.length)}%` }" )
-                    span {{youngPartition.length}}
+                    span( v-if = "youngPartition.length > 0") {{youngPartition.length}}
                 li.adults( :style="{ height: `${scale(adultPartition.length)}%` }" )
-                    span {{adultPartition.length}}
+                    span( v-if = "adultPartition.length > 0") {{adultPartition.length}}
                 li.older( :style="{ height: `${scale(olderPartition.length)}%` }" )
-                    span {{olderPartition.length}}
+                    span( v-if = "olderPartition.length > 0") {{olderPartition.length}}
             ul.domain
                 li.young < 30
                 li.adults 30 - 50
@@ -37,6 +37,7 @@ li
 .bars li
     background: $color
     overflow: hidden
+    padding-top: 1px
     
     span
         color: white

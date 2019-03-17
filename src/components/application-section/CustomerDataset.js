@@ -71,7 +71,7 @@ export function makeRandomManualCustomerObject() {
     const 
         name = `${Faker.name.firstName()} ${Faker.name.lastName()}`,
         age = Math.floor(Math.random() * 60 + 10),
-        gender = Math.floor(Math.random() * 3);
+        gender = Math.random() < .15 ? 0 : Math.floor(Math.random() * 2 + 1);
 
     return { name, age, gender }
 }
