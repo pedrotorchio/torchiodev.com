@@ -1,9 +1,26 @@
 <template lang="pug">
     article#demo-pie-chart
+        .tooltip
         svg( viewport="" :width="width" :height="height")
           g.chart-group( :transform="`translate(${width/2}, ${height/2})`")
             
 </template>
+<style lang="sass" scoped>
+.tooltip
+  top: 0
+  left: 0
+  display: none
+  position: absolute
+  text-align: center
+  line-height: 2em
+  padding: .25em
+  margin-top: -20px
+  font-size: 18px
+  background: #ddd
+  pointer-events: none
+svg
+  cursor: default
+</style>
 
 <script>
 import {
@@ -19,8 +36,9 @@ import { easeQuadOut as d3Easing } from "d3-ease";
 import "d3-transition";
 
 const selectors = {
-  centerG: ".chart-group",
-  arcGs: ".arc-g"
+  centerG: "#demo-pie-chart .chart-group",
+  arcGs: ".arc-g",
+  tooltip: "#demo-pie-chart .tooltip"
 };
 export default {
   props: {
@@ -95,12 +113,22 @@ export default {
           .each(function(d) {
             this.classList.add(`${getGenderLabelAndColor(d.data.gender).label}-${d.data.gender}`)
             this.classList.add(`count-${d.data.count}`)
+          })
+          .on('mouseover', d => {
+            d3Select(selectors.tooltip)
+              .text(`${d.value} ${getGenderLabelAndColor(d.data.gender).label}`)
+              .style('display', 'block')
+          })
+          .on('mouseout', d => {
+            d3Select(selectors.tooltip)
+              .style('display', 'none')
+              .text('')
           }),
-
         enterPaths = enterGs
           .append("path")
           .style("fill", c => getGenderLabelAndColor(c.data.gender).color),
-        enterText = enterGs
+          
+        enterLabel = enterGs
           .append("text")
           .attr("transform", d => `translate(${this.arcGenerator.centroid(d)})`)
           .attr("text-anchor", "middle")
@@ -108,7 +136,7 @@ export default {
           .attr("fill", "white")
           .attr("font-size", "18px")
           .text(
-            d => getGenderLabelAndColor(d.data.gender).label.charAt(0) + d.value
+            d => `${getGenderLabelAndColor(d.data.gender).label.charAt(0)}`
           ),
         allPaths = enterPaths
           .merge(arcs.selectAll('path'))
@@ -116,7 +144,6 @@ export default {
 
       // animate value
       this.animatePath(allPaths);
-      this.animateText(enterText);
     },
     updateData(arcs) {
       
@@ -128,7 +155,6 @@ export default {
     },
     joinDataAndArcs() {
         const data = this.pieGenerator(this.groupedGenders);
-        console.log(`Joining ${data.length} items`)
 
         const chartGroup = d3Select(selectors.centerG),
         arcs = chartGroup
