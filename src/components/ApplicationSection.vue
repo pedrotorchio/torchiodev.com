@@ -6,6 +6,9 @@
                     demo-pie-chart( :size="250" :customers="dataset" )
                     h3 Gender
                 #bar-chart.screen-half
+                    demo-bar-chart( :size="250" :customers="dataset" )
+                    h3 Age
+
             .screen-2.mdc-elevation--z2
             .phone
                 img( src="@/assets/imgs/application/phone-big.png" )
@@ -28,12 +31,13 @@
 import '@/components/svg/tip-arrow'
 import DemoApplication from './application-section/DemoApplication'
 import GenderChartMixin from './application-section/GenderChart.mixin'
+import AgeChartMixin from './application-section/AgeChart.mixin'
 
 import customers from './application-section/CustomerStore'
 
 export default {
     components: { DemoApplication },
-    mixins: [ GenderChartMixin ],
+    mixins: [ GenderChartMixin, AgeChartMixin ],
     data: () => ({
         customers
     }),

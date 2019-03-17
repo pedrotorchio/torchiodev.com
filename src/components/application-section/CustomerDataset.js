@@ -70,7 +70,7 @@ export function makeCustomer(name, age, gender, satisfactionProgress = []) {
 export function makeRandomManualCustomerObject() {
     const 
         name = `${Faker.name.firstName()} ${Faker.name.lastName()}`,
-        age = Math.floor(Math.random() * 40 + 10),
+        age = Math.floor(Math.random() * 60 + 10),
         gender = Math.floor(Math.random() * 3);
 
     return { name, age, gender }
