@@ -79,25 +79,35 @@ export default {
       selection = selection
         .transition()
         .ease(d3Easing)
-        .duration(d => (d.endAngle - d.startAngle) * 200)
-        .delay((d, i) => i * 150);
+        .duration(500)
 
       return selection;
     },
     animateText(text, isInitial = false) {
-      text.style("opacity", 0);
-      this.applyTransition(text)
-        .attr("transform", d => `translate(${this.arcGenerator.centroid(d)})`)
-        .style("opacity", 1);
+        const vm = this;
+        this.applyTransition(text)
+        .attrTween("transform", function(d) {
+            this._current = this._current || d;
+            const i = d3Interpolate(this._current, d);
+            this._current = i(0);
+            return t => {
+              var pos = vm.arcGenerator.centroid(i(t));
+              return "translate("+ pos +")";
+            }
+          })
     },
     animatePath(paths, isInitial = false) {
+      const vm = this;
+
       this.applyTransition(paths)
-        .attrTween("d", b => {
+        .attrTween("d", function(b) {
+          this._current = this._current || { startAngle: b.startAngle, endAngle: b.startAngle };
           const i = d3Interpolate(
-            { startAngle: b.startAngle, endAngle: b.startAngle },
+            this._current,
             b
           );
-        return t => this.arcGenerator(i(t));
+          this._current = i(0)
+        return t => vm.arcGenerator(i(t));
       });
     },
     enterData(arcs) {
@@ -137,9 +147,7 @@ export default {
     },
     updateData(arcs, texts) {      
       this.animatePath(arcs)
-      texts
-        .attr("transform", d => `translate(${this.arcGenerator.centroid(d)})`)
-
+      this.animateText(texts)
     },
     exitData(arcs) {
       arcs.remove();
