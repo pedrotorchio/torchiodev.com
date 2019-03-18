@@ -1,0 +1,17 @@
+@import './app-config'
+
+.content
+    overflow-y: auto
+    overflow-x: hidden
+    height: calc(100% - #{$header-height})
+
+    &::-webkit-scrollbar
+        width: 0em
+        height: 0em
+    
+    &::-webkit-scrollbar-track
+        -webkit-box-shadow: none
+
+    &::-webkit-scrollbar-thumb
+        background-color: $color--text-dark
+        outline: none

@@ -35,11 +35,6 @@ import { easeQuadOut as d3Easing } from "d3-ease";
 
 import "d3-transition";
 
-const selectors = {
-  centerG: "#demo-pie-chart .chart-group",
-  arcGs: ".arc-g",
-  tooltip: "#demo-pie-chart .tooltip"
-};
 export default {
   props: {
     customers: Array,
@@ -96,83 +91,84 @@ export default {
         .style("opacity", 1);
     },
     animatePath(paths, isInitial = false) {
-      this.applyTransition(paths).attrTween("d", b => {
-        const i = d3Interpolate(
-          { startAngle: b.startAngle, endAngle: b.startAngle },
-          b
-        );
+      this.applyTransition(paths)
+        .attrTween("d", b => {
+          const i = d3Interpolate(
+            { startAngle: b.startAngle, endAngle: b.startAngle },
+            b
+          );
         return t => this.arcGenerator(i(t));
       });
     },
     enterData(arcs) {
     
-      const // Create new Gs and Paths and color them
-        enterGs = arcs.enter().append("g")
-          .classed('new', true)
-          .classed(selectors.arcGs, true)
-          .each(function(d) {
-            this.classList.add(`${getGenderLabelAndColor(d.data.gender).label}-${d.data.gender}`)
-            this.classList.add(`count-${d.data.count}`)
-          })
-          .on('mouseover', d => {
-            d3Select(selectors.tooltip)
-              .text(`${d.value} ${getGenderLabelAndColor(d.data.gender).label}`)
-              .style('display', 'block')
-          })
-          .on('mouseout', d => {
-            d3Select(selectors.tooltip)
-              .style('display', 'none')
-              .text('')
-          }),
-        enterPaths = enterGs
-          .append("path")
-          .style("fill", c => getGenderLabelAndColor(c.data.gender).color),
+      const g = arcs
+        .append('g')
+        .classed('arc', true)
+        .each(function(d) {
+          this.classList.add(`${getGenderLabelAndColor(d.data.gender).label}-${d.data.gender}`)
+          this.classList.add(`count-${d.data.count}`)
+        })
+      const paths = g
+        .append('path')
+        .style("fill", c => getGenderLabelAndColor(c.data.gender).color)
+        .on('mouseover', d => {
+          d3Select('.tooltip')
+            .text(`${d.value} ${getGenderLabelAndColor(d.data.gender).label}`)
+            .style('display', 'block')
+        })
+        .on('mouseout', d => {
+          d3Select('.tooltip')
+            .style('display', 'none')
+            .text('')
+        })
+
           
-        enterLabel = enterGs
-          .append("text")
-          .attr("transform", d => `translate(${this.arcGenerator.centroid(d)})`)
-          .attr("text-anchor", "middle")
-          .attr("dominant-baseline", "central")
-          .attr("fill", "white")
-          .attr("font-size", "18px")
-          .text(
-            d => `${getGenderLabelAndColor(d.data.gender).label.charAt(0)}`
-          ),
-        allPaths = enterPaths
-          .merge(arcs.selectAll('path'))
+      g
+        .append("text")
+        .attr("text-anchor", "middle")
+        .attr("dominant-baseline", "central")
+        .attr("fill", "white")
+        .attr("font-size", "18px")
+        .text(
+          d => `${getGenderLabelAndColor(d.data.gender).label.charAt(0)}`
+        )
 
-
-      // animate value
-      this.animatePath(allPaths);
     },
-    updateData(arcs) {
-      
-      arcs.classed('old', true)
-      arcs.classed('new', false)
+    updateData(arcs, texts) {      
+      this.animatePath(arcs)
+      texts
+        .attr("transform", d => `translate(${this.arcGenerator.centroid(d)})`)
+
     },
     exitData(arcs) {
       arcs.remove();
     },
     joinDataAndArcs() {
         const data = this.pieGenerator(this.groupedGenders);
-
-        const chartGroup = d3Select(selectors.centerG),
-        arcs = chartGroup
-            .selectAll(selectors.arcGs)
-            .data(data, d => d.data.gender);
-
-        return arcs;
+        const base = d3Select('#demo-pie-chart svg g.chart-group')
+        return {
+          arcs: base
+            .selectAll(`.arc path`)
+            .data(data),
+          textSelect: base
+            .selectAll(`.arc text`)
+            .data(data)
+        }
     },
     updateChart() {
-        const arcs = this.joinDataAndArcs();
+        const {arcs, textSelect} = this.joinDataAndArcs();
 
-        this.updateData(arcs);
-        this.enterData(arcs);
+        this.updateData(arcs, textSelect);
+        this.enterData(arcs.enter());
         this.exitData(arcs.exit());
+
     },
   },
   mounted() {
     this.updateChart()
+    
+
   },
   watch: {
     groupedGenders: {

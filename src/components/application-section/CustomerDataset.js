@@ -8,6 +8,7 @@ export const genderDataset = {
 }
 export const satisfactionRange = [30, 100]
 export const satisfactionMaxStep = 20
+
 export default class CustomerDataset {
     constructor() {
         this.__dataset = Vue.observable([])
@@ -17,6 +18,8 @@ export default class CustomerDataset {
         return this.__dataset
     }
     insertCustomer(newCustomer) {
+        
+        newCustomer.id = nextId()
         this.__dataset.push(newCustomer)
 
         return this.__dataset.length - 1
@@ -63,7 +66,11 @@ export function getGenderUidByLabel(label) {
 export function getGenderLabelAndColor(numeric) {
     return genderDataset[numeric];
 }
-export function makeCustomer(name, age, gender, satisfactionProgress = []) {
+let ID_TRACK = 0
+export function nextId() {
+    return ++ID_TRACK
+}
+export function makeCustomer(name, age, gender, satisfactionProgress = [0]) {
     return { name, age, gender, satisfactionProgress }
 }
 
@@ -88,7 +95,7 @@ export function getNextSatisfactionPoint(curr) {
 
     const shouldGoDown = () => Math.floor(Math.random() * 10) % 2 == 0
     const isTooLow = val => val < ((max - min)/2 + min)
-    const increase = val => val * 2
+    const increase = val => val * 1.2
     const decrease = val => val * 1
     const keepWithinRange = val => Math.min(Math.max(val, min), max)
 

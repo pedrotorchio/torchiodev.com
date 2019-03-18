@@ -149,32 +149,45 @@ export default {
                     .enter()
                     .append('text')
                     .text(d=>d)
-                    .attr('font-size', '10')
+                    .attr('font-size', '12')
                     .attr('fill', style.color)
+                    .attr('stroke', 'white')
+                    .attr('stroke-width', .5)
                     .attr('font-weight', 'bold')
                     .attr('class', 'avg-entry-value')
                     .attr('x', (d, i) => this.xScale(i) - 20)
                     .attr('y', d => this.yScale(d) - 5);
             }
+        },
+        draw() {
+            this.makeLine('female', this.femaleAverageSatisfactionProgression, {
+                color: getGenderLabelAndColor(getGenderUidByLabel('Female')).color
+            })
+            this.makeLine('male', this.maleAverageSatisfactionProgression, {
+                color: getGenderLabelAndColor(getGenderUidByLabel('Male')).color
+            })
+            this.makeLine('unspecified', this.unspecifiedAverageSatisfactionProgression, {
+                color: getGenderLabelAndColor(getGenderUidByLabel('Unspecified')).color
+            })
+
+            this.makeLine('average', this.generalAverageSatisfactionProgression, {
+                color: 'purple',
+                stroke: 2,
+                values: true
+            })
         }
     },
     mounted() {
-
-        this.makeLine('female', this.femaleAverageSatisfactionProgression, {
-            color: getGenderLabelAndColor(getGenderUidByLabel('Female')).color
-        })
-        this.makeLine('male', this.maleAverageSatisfactionProgression, {
-            color: getGenderLabelAndColor(getGenderUidByLabel('Male')).color
-        })
-        this.makeLine('unspecified', this.unspecifiedAverageSatisfactionProgression, {
-            color: getGenderLabelAndColor(getGenderUidByLabel('Unspecified')).color
-        })
-
-        this.makeLine('average', this.generalAverageSatisfactionProgression, {
-            color: 'purple',
-            stroke: 2,
-            values: true
-        })
+        this.draw()
+        
+    },
+    watch: {
+        generalAverageSatisfactionProgression: {
+            deep: true,
+            handler() {
+                // this.draw()
+            }
+        }
     }
     
 }

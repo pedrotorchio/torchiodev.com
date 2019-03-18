@@ -13,6 +13,7 @@ export default {
 }
 </script>
 <style src="normalize.css"></style>
+<style lang="scss" src="@/styles/_range-input.scss"></style>
 <style lang="scss"> @import "~@material/elevation/mdc-elevation"; </style>
 <style lang="sass" src="@/styles/_global.sass"></style>
 <style lang="sass">

@@ -1,16 +1,39 @@
 <script>
 import customers from './CustomerStore.js'
-import DemoCostumerItem from './components/DemoCustomerItem'
+
+import AppList from './components/DemoAppLanding'
+import AppCreation from './components/DemoAppForm'
+/******
+ * 
+ * 
+ * PRECISA CRIAR A PÁGINA DE SATISFACTION
+ * 
+ * 
+ */
+import { makeCustomer } from './CustomerDataset.js';
 
 export default {
-    components: { DemoCostumerItem },
-
+    components: { AppList, AppCreation },
     data: () => ({
-        page: 0
+        customer: null
     }),
     computed: {
         allCustomers() {
-            return customers.getDataset()
+            return customers.getDataset().sort((a,b) => b.id - a.id)
+        },
+        page() {
+            const c = this.customer
+            
+            return (c == null ? 0 : ( !c.id ?  1 : 2 ))
+        }
+    },
+    methods: {
+        insertCustomer(customer) {
+            customers.insertCustomer(customer)
+            this.customer = Object.assign({}, customer)
+        },
+        openCreationForm() {
+            this.customer = makeCustomer('', '', '')
         }
     }
 }
@@ -18,73 +41,30 @@ export default {
 <template lang="pug">
     #demo-application-body
         header.mdc-elevation--z2 My Customers
-        .content
-            ul
-                li( v-for = "customer in allCustomers" )
-                    demo-costumer-item.mdc-elevation--z1( :customer = "customer" )
-
-        button.mdc-elevation--z2 +
-        
-
+        app-list.body( v-if="page == 0 || page == 2" :customers="allCustomers" @create="openCreationForm" )
+        app-creation.body( v-else-if="page == 1" @save = "insertCustomer(customer)" :customer="customer" )
+        //- app-satisfaction.body( v-else :customer="customer" )
 
 </template>
 
 <style lang="sass" scoped>
-@import '~@/styles/config'
+@import './components/app-config'
 
 #demo-application-body
     overflow: hidden
     font-size: 14px
     height: 100%
 
-$header-height: 28px
-$ul-margin-top: 14px
-$header-margin-bottom: 4px
-
-button, header
+header
     $height: $header-height
     height: $height
     line-height: $height
     color: white
     text-align: center
     margin: 0
-header
-
     background: $color--text-dark
     margin-bottom: $header-margin-bottom
-button
-    display: block
-    font-weight: bold
-    background: $color--maroon
-    font-size: 36px
-    width: 100%
-    cursor: pointer
-
-.content
-    overflow-y: auto
-    overflow-x: hidden
-    $space: $header-margin-bottom
-    height: calc(100% - #{$space} - #{$header-height * 2})
-
-    &::-webkit-scrollbar
-        width: 0em
-        height: 0em
-    
-    &::-webkit-scrollbar-track
-        -webkit-box-shadow: none
-
-    &::-webkit-scrollbar-thumb
-        background-color: $color--text-dark
-        outline: none
-ul
-    margin-bottom: $header-margin-bottom
-    margin-top: $header-margin-bottom
-li
-    display: block
-
-    &:nth-child(odd) .customer
-        background: rgba(lighten($color--text-dark, 50), .5)
-    &:nth-child(even) .customer
-        background: rgba(lighten($color--maroon, 20), .5)
+.body
+    height: calc(100% - #{$header-margin-bottom} - #{$header-height})
 </style>
 

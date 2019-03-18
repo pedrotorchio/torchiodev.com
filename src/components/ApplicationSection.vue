@@ -74,11 +74,15 @@ export default {
     background: white
 .title-text
     width: 450px
+=phone-elevation($color)
+    filter: drop-shadow(7px 17px 6px #{$color})
 .phone
+    +phone-elevation(#ccccccaa)
     position: absolute
     bottom: 0
     left: 0
     z-index: 99
+
 .phone-screen
     height: 234px
     width: 134px
@@ -90,6 +94,7 @@ export default {
     overflow: hidden    
 
 .tip
+    +phone-elevation(#000000aa)
     position: absolute
     z-index: 999
     left: 240px
