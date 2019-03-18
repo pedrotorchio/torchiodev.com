@@ -18,7 +18,7 @@ export default {}
 
 
 $item-height: 2em
-$font-size: 24px
+$font-size: 18px
 
 nav#main-nav
     z-index: 55
@@ -30,6 +30,11 @@ nav#main-nav
     position: fixed
     height: $size--header-height
     box-sizing: border-box
+    margin: 0 auto
+    width: 100%
+    max-width: 1200px
+    left: 50%
+    transform: translateX(-50%)
 #logo
     width: 200px
     display: block

@@ -13,6 +13,8 @@ ul
 .page-section
     box-sizing: border-box
     position: relative
+    overflow-x: hidden
+    overflow-y: hidden
     &.padded
         padding: $size--section-padding
 
@@ -52,3 +54,9 @@ h2.block-title
     font-size: 24px
     font-weight: lighter
     transform: scaleY(1.2) translateY(1em)
+
+.img-group
+    position: relative
+
+    img
+        position: absolute

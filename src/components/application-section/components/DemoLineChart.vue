@@ -175,6 +175,9 @@ export default {
                 stroke: 2,
                 values: true
             })
+        },
+        remove() {
+            d3Select('#demo-line-chart svg g.chart-group').selectAll('*').remove()
         }
     },
     mounted() {
@@ -182,12 +185,13 @@ export default {
         
     },
     watch: {
-        generalAverageSatisfactionProgression: {
+        customers: {
             deep: true,
             handler() {
-                // this.draw()
+                this.remove()
+                this.draw()
             }
-        }
+        },
     }
     
 }

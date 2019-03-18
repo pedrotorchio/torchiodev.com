@@ -31,19 +31,26 @@ export default {}
     padding-top: $size--header-height
 .title-group
     margin-top: 100px
-
-    .title-text
+    width: 100%
+    width: calc(100% - 500px)
+    
+    .title-text, .block-title
         width: 550px // approximated and expanded width of the word 'CUSTOMERS' ((9 letters + 1) * font-size/2)
+        margin-left: auto
+        margin-right: auto
 .img-group
     position: absolute
     bottom: 0
     right: 0
 
-    $offset: 192px
+    img
+        bottom: 0
+    .img-sofa
+        right: 0
     .img-girl
-        margin-right: -$offset
+        right: 104px
     .img-pc
-        margin-right: -$offset
+        right: 330px
 </style>
 
 

@@ -38,6 +38,8 @@ li
     background: $color
     overflow: hidden
     padding-top: 1px
+    transition: height .2s ease-out
+    will-change: height
     
     span
         color: white

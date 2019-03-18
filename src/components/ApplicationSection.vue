@@ -12,7 +12,7 @@
             .screen-2.mdc-elevation--z2
                 demo-line-chart( :customers="dataset" :height="250" :width="500" :padding="10" )
                 h3 Satisfaction Level
-            .phone
+            .phone.img-group
                 img( src="@/assets/imgs/application/phone-big.png" )
                 .phone-screen
                     demo-application
@@ -83,13 +83,18 @@ export default {
     left: 0
     z-index: 99
 
+    img
+        position: absolute
+        bottom: 0
+        left: 0
+
 .phone-screen
     height: 234px
     width: 134px
     background: white
     position: absolute
     z-index: 99
-    bottom: 124px
+    bottom: 120px
     left: 121.5px
     overflow: hidden    
 
