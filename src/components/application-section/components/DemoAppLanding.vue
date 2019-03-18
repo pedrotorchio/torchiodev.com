@@ -18,4 +18,15 @@ export default {
 </script>
 <style lang="sass" src="./_button.sass" scoped></style>
 <style lang="sass" src="./_app-body.sass" scoped></style>
+<style lang="sass" scoped>
+@import './app-config'
+
+li
+    &:nth-child(odd) article
+        background-color: $color--orange
+    &:nth-child(even) article
+        background-color: $color--blue
+
+</style>
+
 
