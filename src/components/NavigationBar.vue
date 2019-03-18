@@ -35,6 +35,7 @@ nav#main-nav
     max-width: 1200px
     left: 50%
     transform: translateX(-50%)
+    font-weight: lighter
 #logo
     width: 200px
     display: block
@@ -44,10 +45,11 @@ ul
     margin-left: 50px
 li
     display: inline-block
+    padding: 1em
 
     a
         display: block
         height: $item-height
         line-height: $item-height
-        padding: 1em
+        
 </style>
