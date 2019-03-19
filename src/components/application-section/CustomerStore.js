@@ -4,7 +4,7 @@ let customers = new CustomerDataset();
 
 
 
-const customerCount = 4
+const customerCount = 1
 for(let gender in [0, 1, 2]) {
     let c = makeRandomCustomer()
         c.satisfactionProgress = makeSatisfactionProgression(Math.random() * 6 + 2)

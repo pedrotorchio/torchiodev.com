@@ -31,11 +31,11 @@ import {
 import { arc as d3Arc, pie as d3Pie } from "d3-shape";
 import { select as d3Select } from "d3-selection";
 import { interpolate as d3Interpolate } from "d3-interpolate";
-import { easeQuadOut as d3Easing } from "d3-ease";
 
-import "d3-transition";
+import DemoAppChart from './DemoAppChart.mixin'
 
 export default {
+  extends: DemoAppChart,
   props: {
     customers: Array,
     size: Number
@@ -75,14 +75,7 @@ export default {
     }
   },
   methods: {
-    applyTransition(selection) {
-      selection = selection
-        .transition()
-        .ease(d3Easing)
-        .duration(500)
-
-      return selection;
-    },
+    
     animateText(text, isInitial = false) {
         const vm = this;
         this.applyTransition(text)

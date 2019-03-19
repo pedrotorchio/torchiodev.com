@@ -6,11 +6,11 @@
                 span.max Max: {{ageExtent[1]}}
                 span.average-age( :style="{ left: `${xScale(averageAge)}%` }") Avg: {{averageAge}}
             ul.bars
-                li.young( :style="{ height: `${scale(youngPartition.length)}%` }" )
+                li.young(  )
                     span( v-if = "youngPartition.length > 0") {{youngPartition.length}}
-                li.adults( :style="{ height: `${scale(adultPartition.length)}%` }" )
+                li.adults(  )
                     span( v-if = "adultPartition.length > 0") {{adultPartition.length}}
-                li.older( :style="{ height: `${scale(olderPartition.length)}%` }" )
+                li.older(  )
                     span( v-if = "olderPartition.length > 0") {{olderPartition.length}}
             ul.domain
                 li.young < 30
@@ -68,8 +68,13 @@ $domain-height: 16px
 <script>
 import { scaleLinear as d3LinearScale } from 'd3-scale'
 import { extent as d3Extent } from 'd3-array'
+import { select as d3Select } from 'd3-selection'
+import { interpolate as d3Interpolate } from "d3-interpolate";
+
+import DemoAppChart from './DemoAppChart.mixin'
 
 export default {
+    extends: DemoAppChart,
     props: {
         customers: Array,
         size: Number
@@ -105,6 +110,37 @@ export default {
         scale() {
             return d3LinearScale([0, this.customersCount], [0, 100])
         }
+    },
+    methods: {
+        updateChart() {
+            const bars = d3Select('#demo-bar-chart .chart-group .bars')
+                .selectAll('li')
+                .data([ this.youngPartition, this.adultPartition, this.olderPartition ])
+            const vm = this
+            this.applyTransition(bars)
+                // .style('height', d => `${this.scale(d.length)}px`)
+                .styleTween('height', function(d) {
+                    
+                    this._current = this._current || d.length;
+                    const i = d3Interpolate(this._current, d.length);
+                    this._current = i(0);
+                    return t => `${vm.scale(i(t))}px`
+                })
+        }
+    },
+    mounted() {
+        this.updateChart()
+    },
+    watch: {
+        customers: {
+            deep: true,
+            handler() {
+                console.log('change')
+                this.updateChart()
+            }
+        }
+
     }
+
 }
 </script>
