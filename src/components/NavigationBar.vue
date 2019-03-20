@@ -1,12 +1,13 @@
 <template lang="pug">
-    nav#main-nav
-        router-link( to = "/" )
-            svg-loader#logo( name="logo-vazado" )
-        ul
-            li
-                router-link( to = "/about" ) About
-            li
-                router-link( to = "/about#contact" ) Contact
+    nav#main-nav.page-section
+        .inner-section    
+            router-link( to = "/" )
+                svg-loader#logo( name="logo-vazado" )
+            ul
+                li
+                    router-link( to = "/about" ) About
+                li
+                    router-link( to = "/about#contact" ) Contact
 </template>
 <script>
 import '@/components/svg/logo-vazado'
@@ -24,18 +25,14 @@ nav#main-nav
     z-index: 99999999999999999
     text-transform: uppercase
     font-size: $font-size
+    position: fixed
+    font-weight: lighter
+    width: 100%
+.inner-section
     display: flex
     align-items: center
     padding: 1em
-    position: fixed
     height: $size--header-height
-    box-sizing: border-box
-    margin: 0 auto
-    width: 100%
-    max-width: 1200px
-    left: 50%
-    transform: translateX(-50%)
-    font-weight: lighter
 #logo
     width: 200px
     display: block
