@@ -1,8 +1,8 @@
 <template lang="pug">
     section#application-section.page-section.padded
         .inner-section
-            .app-section.big-side
-                .small-side
+            .app-section.half-side
+                .limited-width
                     .screen-1.mdc-elevation--z2
                         #pie-chart.screen-half
                             demo-pie-chart( :size="250" :customers="dataset" )
@@ -22,7 +22,7 @@
                         svg-loader( name="tip-arrow" )
                         h3.textual-tip Try this demo
 
-            .title-group.small-side
+            .title-group.half-side
                 h2.block-title
                     span.line.big Transform
                     span.line.big Your Work

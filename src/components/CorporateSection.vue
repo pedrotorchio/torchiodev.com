@@ -1,8 +1,8 @@
 <template lang="pug">
     section#corporate-section.page-section.padded
         .inner-section
-            .title-group.big-side
-                .small-side
+            .title-group.half-side
+                .limited-width
                     h2.block-title
                         span.line.small Let
                         span.line.big Customers
@@ -11,7 +11,7 @@
                     p.title-text
                         | Lorem Ipsum is simply dummy text of the printing and typesetting industry. 
                         | Lorem Ipsum has been the industry's standard dummy text
-            .img-group.small-side
+            .img-group.half-side
                 img.img-pc( src="@/assets/imgs/corporate/pc-big.png" )
                 img.img-girl( src="@/assets/imgs/corporate/girl-big.png" )
                 img.img-sofa( src="@/assets/imgs/corporate/sofa-big.png" )

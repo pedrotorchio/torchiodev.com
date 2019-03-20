@@ -1,11 +1,10 @@
 <template lang="pug">
     section#ecommerce-section.page-section.padded
         .inner-section
-            .img-section.big-side
-                .small-side
+            .img-section.half-side
                     img( src="@/assets/imgs/ecommerce/clothes-display.png")
                     .btn.mdc-elevation--z2 Purchase
-            .title-group.small-side
+            .title-group.half-side
                 h2.block-title
                     span.line.small Have
                     span.line.big The Most

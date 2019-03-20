@@ -18,29 +18,31 @@ ul
     overflow-x: hidden
     overflow-y: hidden
 
+    $max-width: 1600px
+
     &.padded > .inner-section
         padding: $size--section-padding
 
     &>.inner-section
-        max-width: 1600px
+        max-width: $max-width 
         width: 100%
         margin: 0 auto
         box-sizing: border-box
-    
 
-    $small-side-width: 600px
+    $small-side-width: $max-width/2
+    .half-side
+        width: 50%
+        padding-right: $size--section-padding
+        flex: 0 0 auto
+        @if $debug
+            outline: 1px solid orange
     .big-side
-        width: calc(100% - #{$small-side-width} - #{$size--section-padding})
+        width: $small-side-width
         margin-right: $size--section-padding
         flex: 0 0 auto
 
         @if $debug
             outline: 1px solid green
-
-        &>.small-side
-            margin-left: auto
-            margin-right: auto
-
         
     .small-side
         width: $small-side-width
@@ -48,6 +50,12 @@ ul
 
         @if $debug
             outline: 1px solid red
+
+    .limited-width
+        width: 550px
+        margin-left: auto
+        margin-right: auto
+
 
 .block-letters
     font-family: impact, sans-serif
