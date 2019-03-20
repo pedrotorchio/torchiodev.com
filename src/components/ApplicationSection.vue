@@ -1,33 +1,35 @@
 <template lang="pug">
     section#application-section.page-section.padded
-        .app-section
-            .screen-1.mdc-elevation--z2
-                #pie-chart.screen-half
-                    demo-pie-chart( :size="250" :customers="dataset" )
-                    h3 Gender
-                #bar-chart.screen-half
-                    demo-bar-chart( :size="250" :customers="dataset" )
-                    h3 Age
+        .inner-section
+            .app-section.big-side
+                .small-side
+                    .screen-1.mdc-elevation--z2
+                        #pie-chart.screen-half
+                            demo-pie-chart( :size="250" :customers="dataset" )
+                            h3 Gender
+                        #bar-chart.screen-half
+                            demo-bar-chart( :size="250" :customers="dataset" )
+                            h3 Age
 
-            .screen-2.mdc-elevation--z2
-                demo-line-chart( :customers="dataset" :height="250" :width="500" :padding="10" )
-                h3 Satisfaction Level
-            .phone.img-group
-                img( src="@/assets/imgs/application/phone-big.png" )
-                .phone-screen
-                    demo-application
-            .tip
-                svg-loader( name="tip-arrow" )
-                h3.textual-tip Try this demo
+                    .screen-2.mdc-elevation--z2
+                        demo-line-chart( :customers="dataset" :height="250" :width="500" :padding="10" )
+                        h3 Satisfaction Level
+                    .phone.img-group
+                        img( src="@/assets/imgs/application/phone-big.png" )
+                        .phone-screen
+                            demo-application
+                    .tip
+                        svg-loader( name="tip-arrow" )
+                        h3.textual-tip Try this demo
 
-        .title-group
-            h2.block-title
-                span.line.big Transform
-                span.line.big Your Work
-                span.line.big Routine.
-                span.line.medium Make Life Easier.
-            p.title-text
-                | It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, 
+            .title-group.small-side
+                h2.block-title
+                    span.line.big Transform
+                    span.line.big Your Work
+                    span.line.big Routine.
+                    span.line.medium Make Life Easier.
+                p.title-text
+                    | It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, 
 </template>
 <script>
 import '@/components/svg/tip-arrow'
@@ -57,13 +59,10 @@ export default {
 #application-section
     $bg-blue: #f2f6ff
     background: radial-gradient(circle 60vw at left bottom, white 0%, #{$bg-blue} 100%)
+.inner-section
     display: flex
     align-items: center
 
-.app-section
-    flex: 1 1 auto
-.title-group
-    flex: 0 1 auto
     
 .screen-1, .screen-2
     position: relative

@@ -6,9 +6,9 @@
 #email-section
     background-color: black
     color: white
-    font-weight: bold  
+    font-weight: normal  
     text-align: center
-    font-size: 48px
+    font-size: 24px
     letter-spacing: 0.25em
     padding: 50px
 </style>

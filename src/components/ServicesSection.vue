@@ -30,6 +30,7 @@ export default {
 </script>
 <style lang="sass" scoped>
 ul.services
+    z-index: 9999
     display: flex
     justify-content: space-around
 </style>

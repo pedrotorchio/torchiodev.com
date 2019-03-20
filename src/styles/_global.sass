@@ -1,5 +1,7 @@
 @import './config'
 
+$debug: false
+
 a
     text-decoration: none
     color: inherit
@@ -15,8 +17,37 @@ ul
     position: relative
     overflow-x: hidden
     overflow-y: hidden
-    &.padded
+
+    &.padded > .inner-section
         padding: $size--section-padding
+
+    &>.inner-section
+        max-width: 1600px
+        width: 100%
+        margin: 0 auto
+        box-sizing: border-box
+    
+
+    $small-side-width: 600px
+    .big-side
+        width: calc(100% - #{$small-side-width} - #{$size--section-padding})
+        margin-right: $size--section-padding
+        flex: 0 0 auto
+
+        @if $debug
+            outline: 1px solid green
+
+        &>.small-side
+            margin-left: auto
+            margin-right: auto
+
+        
+    .small-side
+        width: $small-side-width
+        flex: 0 0 auto
+
+        @if $debug
+            outline: 1px solid red
 
 .block-letters
     font-family: impact, sans-serif
