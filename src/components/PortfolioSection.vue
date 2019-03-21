@@ -7,7 +7,10 @@
                     span.tip Select a work from the grid
 
                 .half-side.grid
-                    work-item( v-for="work in works" :work="work" :key="work.title")
+                    work-item( v-for="work in works" :key="work.title"
+                    @click.native="selected=work"
+                    :work="work"
+                    :class="{ toggled: selected.title == work.title }" )
 </template>
 <script>
 import works from '@/assets/portfolio'

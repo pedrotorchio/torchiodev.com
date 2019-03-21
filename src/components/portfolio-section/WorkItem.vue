@@ -16,13 +16,17 @@ $transition-duration: (1s, .2s)
 $transition-timing: ease-out
 .work-item
     position: relative
+    cursor: pointer
+    user-select: none
     
     &:hover, &.toggled
-        box-shadow: 0 0 10px rgba(black, .5)
+        
         z-index: 999
+        img
+            box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22)
         img, &::before
             transition-duration: nth($transition-duration, 1)
-            transform: scale(1.2)
+            transform: scale(1.1)
 
         &::before
             opacity: 0
@@ -30,13 +34,19 @@ $transition-timing: ease-out
     h4, img
         position: absolute
 
+    img
+        box-shadow: 0 0 0 0 rgba(black, 0)
     img, &::before
-        transition-property: transform, opacity
+        transition-property: transform, opacity, box-shadow
         transition-duration: nth($transition-duration, 2)
         transition-timing-function: $transition-timing
         height: 100%
         width: 100%
         object-fit: cover
+
+    &.toggled img
+        transform: scale(1.2)
+        box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23)
 
 .work-item::before
     content: ''
