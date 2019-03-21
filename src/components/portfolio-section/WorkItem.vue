@@ -61,10 +61,9 @@ $transition-timing: ease-out
     opacity: 1
     z-index: 99
 
-
-@for $i from 1 through 8
-    $adjustment: 80deg * $i
-    $color: adjust-hue(hsl(0, 50%, 50%), $adjustment)
+$colors: (#ffc107, #3f51b5, #009688, #ff5722, #9c27b0, #f44336, #00bcd4)
+@for $i from 1 through 7    
+    $color: nth($colors, $i)
     .work-item:nth-of-type(#{$i})::before
         background-color: rgba($color, .5)
 </style>
