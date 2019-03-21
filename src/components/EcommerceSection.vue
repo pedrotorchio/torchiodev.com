@@ -31,7 +31,9 @@
         margin: 0 auto
         display: block
         z-index: 9
-        height: 400px
+        width: 100%
+        height: auto
+
     .btn
         width: 250px
         line-height: 1.5em

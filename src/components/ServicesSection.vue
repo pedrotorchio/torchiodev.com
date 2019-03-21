@@ -1,11 +1,12 @@
 <template lang="pug">
     section#services-section.page-section
-        ul.services
-            li( v-for="(service, i) in services")
-                service( :service="service" :toggled="toggledService == i" :invert="i > 1" 
-                @toggle="open(i)"
-                @hover="open(i)" 
-                @close="close(i)" )
+        .inner-section
+            ul.services
+                li( v-for="(service, i) in services")
+                    service( :service="service" :toggled="toggledService == i" :invert="i > 1" )
+                    //- @toggle="open(i)"
+                    //- @hover="open(i)" 
+                    //- @close="close(i)" )
 </template>
 <script>
 import services from '@/assets/services'
@@ -29,6 +30,8 @@ export default {
 }
 </script>
 <style lang="sass" scoped>
+#services-section
+    overflow: visible
 ul.services
     z-index: 9999
     display: flex

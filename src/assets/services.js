@@ -1,3 +1,5 @@
+import getHtml from './getHtml'
+
 export class Service {
 
     constructor(title, subtitle, description) {
@@ -7,9 +9,7 @@ export class Service {
     }
         
     getHtml(field) {
-        return this[field]
-            .replace(/^\s+|\s+$/gm, '') //trim newline from edges
-            .replace(/\n/g, '</br>') // replace newline with br
+        return getHtml(this[field])
     }
 }
 

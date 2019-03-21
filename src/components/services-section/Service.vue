@@ -31,6 +31,8 @@ h3, p, h4
     line-height: 1.2em
     margin: 0
     font-weight: lighter
+h4, p
+    text-align: left
 h4
     font-weight: bold
     font-size: 24px

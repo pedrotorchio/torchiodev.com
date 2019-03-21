@@ -4,6 +4,7 @@
     ecommerce-section
     application-section
     services-section
+    portfolio-section
     me-section
     email-section
 </template>
@@ -13,6 +14,7 @@ import CorporateSection from '@/components/CorporateSection'
 import EcommerceSection from '@/components/EcommerceSection'
 import ApplicationSection from '@/components/ApplicationSection'
 import ServicesSection from '@/components/ServicesSection'
+import PortfolioSection from '@/components/PortfolioSection'
 import MeSection from '@/components/MeSection'
 import EmailSection from '@/components/EmailSection'
 
@@ -24,6 +26,7 @@ export default {
     EcommerceSection,
     ApplicationSection,
     ServicesSection,
+    PortfolioSection,
     MeSection,
     EmailSection
   }
