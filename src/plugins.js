@@ -8,11 +8,11 @@ let handleOutsideClick;
 Vue.directive('out-click', {
     bind (el, binding, vnode) {
 
-        handleOutsideClick = (e) => {
+        handleOutsideClick = e => {
             e.stopPropagation()
-            const handler = binding.value
-            
+            let issame = false
             if (!el.contains(e.target)) {
+                issame = true
                 el.dispatchEvent(new Event('out-click'))
             }
         }

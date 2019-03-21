@@ -18,10 +18,15 @@ $transition-timing: ease-out
     position: relative
     cursor: pointer
     user-select: none
+
+    z-index: 9
     
+    &:hover
+        z-index: 999
+    &.toggled
+        z-index: 9999
     &:hover, &.toggled
         
-        z-index: 999
         img
             box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22)
         img, &::before

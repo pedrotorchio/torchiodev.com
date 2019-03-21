@@ -19,6 +19,9 @@ export class Work {
         return `/imgs/portfolio/${this.imgsFolder}/${this.imgs[i]}`;
     }
 }
+export function makeEmptyWork() {
+    return new Work('','','',null,[],[],[], '');
+}
 export default [
     new Work('Nabuco Magazine', null, '11/2017', new URL('http://www.revistanabuco.com.br'), [
         'Government funded blog and magazine',
