@@ -62,7 +62,7 @@ $transition-timing: ease-out
     z-index: 99
 
 $colors: (#ffc107, #3f51b5, #009688, #ff5722, #9c27b0, #f44336, #00bcd4)
-@for $i from 1 through 7    
+@for $i from 1 through length($colors)
     $color: nth($colors, $i)
     .work-item:nth-of-type(#{$i})::before
         background-color: rgba($color, .5)
