@@ -2,20 +2,20 @@
     section#portfolio-section.page-section
         .inner-section.padded
             h2 Portfolio
-            .content( :class="{ selected }")
+            .content( :class="{ selected, 'show-tip': showTip }")
                 .half-side.description
                     span.tip Select a work from the grid
                     .details
                         .heading
                             .title-group
                                 h3.title {{ selectedFallback.title  }}
-                                h4.subtitle {{ selectedFallback.subtitle }}
+                                h4.subtitle( :class="{ separator: selectedFallback.subtitle }" ) {{ selectedFallback.subtitle }}
                             span.date {{ selectedFallback.date }}
-                        span.url {{ selectedFallback.url }}
+                        a.url( :href="selectedFallback.url") {{ selectedFallback.url }}
                         ul.features
                             li( v-for="(feat, i) in selectedFallback.features" :key="i" ) {{ feat }}
                         ul.tags
-                            li( v-for="(tag, i) in selectedFallback.tags" :key="i" ) {{ tag }}
+                            li( v-for="(tag, i) in selectedFallback.tags" :key="i" ) {{ `#${tag}` }}
 
                 .half-side.grid
                     work-item( v-for="work in works" :key="work.title"
@@ -33,16 +33,31 @@ export default {
     components: { WorkItem },
     data: () => ({
         works,
-        selected: null
+        selected: null,
+        showTip__: true
     }),
     computed: {
         selectedFallback() {
             return this.selected || makeEmptyWork()
+        },
+        showTip() {
+            return !Boolean(this.selected) && Boolean(this.showTip__)
         }
     },
     methods: {
         select(work){
-            this.selected = work
+            if (this.selected) {
+                this.showTip__ = false
+                this.selected = null
+                setTimeout(() => {
+                    this.selected = work
+                    this.showTip__ = true
+                }, 50)
+            } else {
+                this.selected = work
+                this.showTip__ = true
+            }
+                
         },
         deselect(work){
             if (this.selected && this.selected.title == work.title)
@@ -56,7 +71,7 @@ export default {
 </script>
 <style lang="sass" scoped>
 @import '~@/styles/config'
-@import url('https://fonts.googleapis.com/css?family=Dosis')
+@import url('https://fonts.googleapis.com/css?family=Dosis:200,400')
 
 $height: ($size--max-width - $size--section-padding)/2
 #portfolio-section    
@@ -71,6 +86,23 @@ $height: ($size--max-width - $size--section-padding)/2
         // height: $side
         // max-width: $side
         // min-width: $side
+
+%tip-hidden
+    transform: translateX(#{-$height}) translateY(-50%)
+    opacity: 0
+.tip
+    @extend %tip-hidden
+    text-align: center
+    display: block
+    letter-spacing: .4em
+    position: absolute
+    white-space: nowrap
+    top: 50%
+    left: 50%
+
+.show-tip .tip
+    transform: translateY(-50%) translateX(-50%)
+    opacity: 1
 .description
     overflow: hidden
     position: relative
@@ -79,62 +111,78 @@ $height: ($size--max-width - $size--section-padding)/2
     color: white
     height: $height
         
+    &.show-tip
     &.selected
-        .tip
-            transform: translateX(#{-$height}) translateY(-50%)
-            opacity: 0
         .details
             transform: translateX(0)
             opacity: 1
+        .tip
+            @extend %tip-hidden
 
 .details
     transform: translateX(100px)
     opacity: 0
+    font-weight: lighter
+    padding: 50px 25px
+
 
 .heading
     display: flex
     justify-content: flex-start
-    align-items: center
-    padding: 1em 0
-    font-weight: lighter
+    align-items: flex-start
     font-family: 'Dosis', 'Open Sans', sans-serif
+    margin-bottom: 1em
+    font-size: 24px
+
     .date
+        font-size: 16px
         flex: 0 0 auto
         text-align: right
         letter-spacing: .2em
     .title-group
         flex: 1 1 auto
         text-align: left
-        font-size: 24px
-        font-weight: inherit
 
         .title, .subtitle
             font-weight: inherit
             margin: 0
-            display: inline-block
+            display: block
+            text-shadow: 3px 0 0 black
+
         .subtitle
             letter-spacing: .1em
+            // &.separator::before
+            //     content: '\2014'
+            //     margin: 0 1em
         .title
             letter-spacing: .2em
             text-transform: uppercase
-            margin-right: 1em
+.url
+    font-size: 18px
+    color: white
+    &:hover
+        color: yellow
+.features
+    font-size: 18px
+    list-style-type: circle
+    list-style-position: inside
+    padding-left: 2em
+    li
+        margin: 1em 0
         
-    
-    
+.tags
+    font-size: 14px
+    width: 60%
+    margin: 0 auto
+    text-align: center
+    li
+        display: inline-block
+        white-space: nowrap
+        margin: .5em
+        
 .tip, .details
     transition: .2s ease-out
     transition-property: opacity, transform
-.tip
-    opacity: 1
-    text-align: center
-    display: block
-    font-weight: lighter
-    letter-spacing: .4em
-    position: absolute
-    top: 50%
-    left: 50%
-    transform: translateY(-50%) translateX(-50%)
-    white-space: nowrap
 
 
 .half-side

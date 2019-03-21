@@ -30,7 +30,7 @@ export default [
         'Fully customized theme and functionalities',
         'Progressively enhanced content (no scripting required)'
     ],[
-        'wordpress', 'blog', 'magazine', 'pregressive-enhancement', 'self-managed'
+        'wordpress', 'blog', 'magazine', 'progressive-enhancement', 'self-managed'
     ],[ 'cover-full.jpg' ], 'nabuco'),
     new Work('Reato', 'Occupational Therapy', '01/2019', new URL('https://www.toreato.com.br'), [
         'Static corporate website',
