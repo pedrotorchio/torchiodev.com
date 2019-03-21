@@ -1,18 +1,17 @@
 <template lang="pug">
     section#me-section.page-section
-        a.btn Who Am I
+        a.btn( href="/resume.pdf" title="Resume updated on 13/MARCH/2019" target="_blank") Who Am I
         video( ref="video" autoplay muted loop playsinline @canplaythrough="play" @load="play" )
             source( src="/video/plasma-effect.mp4" type="video/mp4" )
 </template>
 <style lang="sass" scoped>
 @import '~@/styles/config'
 #me-section
-    height: 400px
+    height: 200px
     background: black
 .btn
-    $glow-color: rgba($color--orange, .8)
+    $color: $color--yellow
     cursor: pointer
-    color: $color--orange
     display: block
     position: absolute
     width: 500px
@@ -27,16 +26,16 @@
     -webkit-transform: translate(-50%, -50%)
     transform: translate(-50%, -50%)
     z-index: 999
-    border: 5px solid $color--orange
+    border: 5px solid $color
+    color: $color
     text-shadow: 3px 0px 0px black
-    box-shadow: 0 0 20px 3px $glow-color
-    filter: drop-shadow(0px 0px 20px #{$glow-color})
 
 video
     position: absolute
     height: 100%
     object-fit: cover
     width: 100%
+    filter: hue-rotate(30deg) blur(8px)
 </style>
 <script>
 export default {

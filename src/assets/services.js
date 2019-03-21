@@ -15,10 +15,10 @@ export class Service {
 
 export default [
     new Service('Self Managed Website', 
-        `Change de content yourself,
+        `Change the content yourself,
         no skills required`,
         `Ideal for small companies.
-        It’s much cheaper to be able to update all the information in the website without paying someone to do it.`
+        It’s much cheaper to be able to update all the information in the website without hiring someone to do it.`
     ),
     new Service('Blog', 
         `Share your thoughts,
@@ -33,6 +33,6 @@ export default [
     new Service('Web Applications', 
         `Automate tiresome tasks.
         Visualize complex data.`,
-        `Don't waste valuable time with unnecessary work and have a better understanding of your data.`
+        `Don't waste valuable time with unnecessary work and have a better understanding of your data in any device, anywhere.`
     ),
 ]

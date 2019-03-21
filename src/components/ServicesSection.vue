@@ -2,18 +2,18 @@
     section#services-section.page-section
         .inner-section
             ul.services
-                li( v-for="(service, i) in services")
-                    service( :service="service" :toggled="toggledService == i" :invert="i > 1" )
+                li( v-for="(service, i) in services" :key="i")
+                    service-item( :service="service" :toggled="toggledService == i" :invert="i > 1" )
                     //- @toggle="open(i)"
                     //- @hover="open(i)" 
                     //- @close="close(i)" )
 </template>
 <script>
 import services from '@/assets/services'
-import Service from './services-section/Service'
+import ServiceItem from './services-section/ServiceItem'
 
 export default {
-    components: { Service },
+    components: { ServiceItem },
     data: () => ({
         services,
         toggledService: -1
@@ -32,8 +32,8 @@ export default {
 <style lang="sass" scoped>
 #services-section
     overflow: visible
+    z-index: 99
 ul.services
-    z-index: 9999
     display: flex
     justify-content: space-around
 </style>

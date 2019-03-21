@@ -24,5 +24,6 @@ export default {
 body
   color: $color--text-dark
   font-family: 'Open Sans', sans-serif
+  user-select: none
 </style>
 

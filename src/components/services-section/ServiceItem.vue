@@ -1,11 +1,11 @@
 <template lang="pug">
     .service( :class = "{ toggled, invert }" 
         v-out-click @click="$emit('toggle')" @out-click="$emit('close')" )
-
-        h3 {{ service.title }}
-        .bubble
-            h4( v-html="service.getHtml('subtitle')" )
-            p( v-html="service.getHtml('description')" )
+        .container
+            h3 {{ service.title }}
+            .bubble
+                h4( v-html="service.getHtml('subtitle')" )
+                p( v-html="service.getHtml('description')" )
 </template>
 <style lang="sass" scoped>
 @import '~@/styles/config'
@@ -19,11 +19,9 @@
     transition: color .2 ease-out
     min-width: 64px
     text-align: center
-    
-    &.toggled, &:hover
-        color: $color--maroon
         
-    
+.container
+    display: inline
 .service, h3
     display: inline-block
 h3, p, h4
@@ -55,7 +53,7 @@ $border-radius: 20px
     color: white
     max-width: 600px
     min-width: 350px
-    transform: scale(.5)
+    transform: scale(0)
     transform-origin: top left
     opacity: 0
     transition-property: transform, opacity
@@ -69,9 +67,11 @@ $border-radius: 20px
     right: calc(100% + 1em)
 
 
-.service.toggled .bubble, .service:hover .bubble
-    transform: scale(1)
-    opacity: 1
+.service.toggled, .container:hover
+    color: $color--maroon
+    .bubble
+        transform: scale(1)
+        opacity: 1
 
 </style>
 
