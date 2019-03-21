@@ -7,10 +7,16 @@
                     span.tip Select a work from the grid
 
                 .half-side.grid
+                    work-item( v-for="work in works" :work="work" :key="work.title")
 </template>
 <script>
+import works from '@/assets/portfolio'
+import WorkItem from './portfolio-section/WorkItem'
+
 export default {
+    components: { WorkItem },
     data: () => ({
+        works,
         selected: {
             
         }
@@ -23,6 +29,16 @@ export default {
 $height: ($size--max-width - $size--section-padding)/2
 #portfolio-section    
     background: $color--maroon
+.grid
+    display: flex
+    flex-wrap: wrap
+    .work-item
+        $side: $height/2
+        flex: 1 0 $side
+        width: $side
+        // height: $side
+        // max-width: $side
+        // min-width: $side
 
 .content
     display: flex
