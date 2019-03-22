@@ -2,7 +2,9 @@
     #demo-app-satisfaction
         .content
             ul.satisfaction-entries
-                li(v-for="(entry, i) in progress") {{entry}}
+                li(v-for="(entry, i) in progress")
+                    span {{ progress.length - i }} 
+                    | {{ entry }}
         .actions
             button.mdc-elevation--z2( @click="insert") +
             input( type="number" name="newSatisfaction" v-model.number="newSatisfaction" min="0" max="100" step="5")
@@ -32,5 +34,27 @@ export default {
 <style lang="sass" src="./_app-body.sass" scoped></style>
 <style lang="sass" scoped>
 @import './app-config'
+
+.satisfaction-entries li
+    color: white
+    font-weight: lighter
+    text-align: center
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3)
+    line-height: 2em
+    height: 2em
+    letter-spacing: .2em
+    position: relative
+    
+    span
+        position: absolute
+        left: 0
+        font-size: 12px
+        text-shadow: none
+        padding-left: .5em
+    
+    &:nth-child(odd)
+        background-color: rgba($color--male, .5)
+    &:nth-child(even)
+        background-color: rgba($color--female, .5)
 
 </style>

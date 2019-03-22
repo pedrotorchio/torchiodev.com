@@ -89,10 +89,13 @@ export default {
         },
         getEvenSatisfactionProgressions(progressions) {
             
-            return progressions.map(p => this.getEvenSatisfactionProgression(p, this.dataBreadth))
+            return progressions
+                .filter(p => p && p.length > 0)
+                .map(p => this.getEvenSatisfactionProgression(p, this.dataBreadth))
         },
         getEvenSatisfactionProgression(original, aimLength) {
             let copy = original.slice()
+
             const 
                 originalLength = original.length,
                 diffLength = aimLength - originalLength,

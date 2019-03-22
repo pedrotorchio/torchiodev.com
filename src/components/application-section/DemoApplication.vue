@@ -32,10 +32,8 @@ export default {
     },
     methods: {
         insertCustomer(customer) {
-            console.log(customer)
             customers.insertCustomer(customer)
             this.customer = Object.assign({}, customer)
-            console.log(this.customer)
         },
         openSatisfactionForm(customer) {
             this.customer = customer
@@ -54,7 +52,7 @@ export default {
 </script>
 <template lang="pug">
     #demo-application-body
-        header.mdc-elevation--z2( @click.native="toLanding") {{ title }}
+        header.mdc-elevation--z2( @click="toLanding" ) {{ title }}
         app-list.body( v-if="page === 0" :customers="allCustomers" @create="openCreationForm" @open="openSatisfactionForm" )
         app-creation.body( v-else-if="page === 1" @save = "insertCustomer" @return="toLanding" )
         app-satisfaction.body( v-else-if="page === 2" :customer="customer" @new-entry="newSatisfactionEntry" @return="toLanding" )
@@ -78,6 +76,7 @@ header
     margin: 0
     background: $color--text-dark
     margin-bottom: $header-margin-bottom
+    cursor: pointer
 .body
     height: calc(100% - #{$header-margin-bottom} - #{$header-height})
 </style>

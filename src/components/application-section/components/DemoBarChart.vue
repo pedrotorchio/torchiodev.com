@@ -135,7 +135,6 @@ export default {
         customers: {
             deep: true,
             handler() {
-                console.log('change')
                 this.updateChart()
             }
         }

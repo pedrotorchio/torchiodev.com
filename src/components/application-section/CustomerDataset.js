@@ -82,7 +82,7 @@ export function nextId() {
     return ++ID_TRACK
 }
 
-export function makeCustomer(name, age, gender, satisfactionProgress = [0]) {
+export function makeCustomer(name, age, gender, satisfactionProgress = []) {
     return new Customer(name, age, gender, satisfactionProgress)
 }
 
@@ -123,7 +123,7 @@ export function getNextSatisfactionPoint(curr) {
 }
 export function makeSatisfactionProgression(count) {
     const initial = Math.random() * satisfactionRange[1]
-    let values = [0]
+    let values = []
     for(let i = 0 ; i < count ; i++) {
         values.push(getNextSatisfactionPoint(values[i-1]))
     }
