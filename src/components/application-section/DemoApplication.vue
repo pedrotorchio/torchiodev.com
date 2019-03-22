@@ -3,6 +3,7 @@ import customers from './CustomerStore.js'
 
 import AppList from './components/DemoAppLanding'
 import AppCreation from './components/DemoAppForm'
+import AppSatisfaction from './components/DemoAppSatisfaction'
 /******
  * 
  * 
@@ -10,14 +11,16 @@ import AppCreation from './components/DemoAppForm'
  * 
  * 
  */
-import { makeCustomer } from './CustomerDataset.js';
 
 export default {
-    components: { AppList, AppCreation },
+    components: { AppList, AppCreation, AppSatisfaction },
     data: () => ({
-        customer: null
+        customer: null,
     }),
     computed: {
+        title() {
+            return this.page === 2 ? this.customer.name : "My Customers"
+        },
         allCustomers() {
             return customers.getDataset().sort((a,b) => b.id - a.id)
         },
@@ -29,21 +32,32 @@ export default {
     },
     methods: {
         insertCustomer(customer) {
+            console.log(customer)
             customers.insertCustomer(customer)
             this.customer = Object.assign({}, customer)
+            console.log(this.customer)
+        },
+        openSatisfactionForm(customer) {
+            this.customer = customer
         },
         openCreationForm() {
-            this.customer = makeCustomer('', '', '')
+            this.customer = {}
+        },
+        newSatisfactionEntry(value) {
+            this.customer.satisfactionProgress.push(value)
+        },
+        toLanding() {
+            this.customer = null
         }
     }
 }
 </script>
 <template lang="pug">
     #demo-application-body
-        header.mdc-elevation--z2 My Customers
-        app-list.body( v-if="page == 0 || page == 2" :customers="allCustomers" @create="openCreationForm" )
-        app-creation.body( v-else-if="page == 1" @save = "insertCustomer(customer)" :customer="customer" )
-        //- app-satisfaction.body( v-else :customer="customer" )
+        header.mdc-elevation--z2( @click.native="toLanding") {{ title }}
+        app-list.body( v-if="page === 0" :customers="allCustomers" @create="openCreationForm" @open="openSatisfactionForm" )
+        app-creation.body( v-else-if="page === 1" @save = "insertCustomer" @return="toLanding" )
+        app-satisfaction.body( v-else-if="page === 2" :customer="customer" @new-entry="newSatisfactionEntry" @return="toLanding" )
 
 </template>
 

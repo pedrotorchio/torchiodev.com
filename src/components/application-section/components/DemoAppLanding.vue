@@ -3,7 +3,7 @@
         .content
             ul
                 li( v-for = "customer in customers" )
-                    demo-costumer-item.mdc-elevation--z1( :customer = "customer" )
+                    demo-costumer-item.mdc-elevation--z1( :customer = "customer" @click.native="$emit('open', customer)" :class="[customer.getGenderLabel()]")
         button.mdc-elevation--z2( @click="$emit('create')") +
 </template>
 <script>
@@ -22,10 +22,18 @@ export default {
 @import './app-config'
 
 li
-    &:nth-child(odd) article
-        background-color: $color--orange
-    &:nth-child(even) article
-        background-color: $color--blue
+    article
+        border-bottom: 4px solid rgba(black, .2)
+
+                
+        &.Male
+            background: rgba($color--male, .5)
+        &.Female
+            background: rgba($color--female, .5)
+        &.Unspecified
+            background: rgba($color--unspecified, .5)
+    
+
 
 </style>
 

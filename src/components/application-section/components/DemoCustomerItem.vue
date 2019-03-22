@@ -11,6 +11,7 @@ export default {
 </script>
 <style lang="sass" scoped>
 @import "~@/styles/config"
+@import "./app-config"
 
 $item-height: 2em
 .customer
@@ -28,10 +29,10 @@ $item-height: 2em
     transition-property: outline, box-shadow
     will-change: outline
     cursor: pointer
+    transition: outline .2s ease-out
 
     &:hover
         outline: 1px solid $color--text-dark
-        
 
 
 </style>

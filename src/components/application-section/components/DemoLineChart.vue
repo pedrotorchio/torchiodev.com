@@ -92,26 +92,17 @@ export default {
             return progressions.map(p => this.getEvenSatisfactionProgression(p, this.dataBreadth))
         },
         getEvenSatisfactionProgression(original, aimLength) {
+            let copy = original.slice()
             const 
                 originalLength = original.length,
-                unitBreadth = Math.floor(aimLength / originalLength),
-                remainder = aimLength % originalLength
-            
-            let newProgression = []
+                diffLength = aimLength - originalLength,
+                value = original[originalLength-1]
 
-            function generateUnit(value, offset = 0) {
-                return generateArray(value, unitBreadth + offset)
+            for (let i = 0 ; i < diffLength ; i++) {
+                copy.push(value)
             }
-            for (let i = 0 ; i < originalLength - 1 ; i++) {
-                const unit = generateUnit(original[i])
-                
-                newProgression = newProgression.concat(unit)
-                
-            }
-            const unit = generateUnit(original[originalLength - 1], remainder)
-            newProgression = newProgression.concat(unit)
 
-            return newProgression
+            return copy
         },
         makeLine(name, points, style) {
             style = {

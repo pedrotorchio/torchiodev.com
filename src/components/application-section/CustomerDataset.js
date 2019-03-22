@@ -9,6 +9,17 @@ export const genderDataset = {
 export const satisfactionRange = [30, 100]
 export const satisfactionMaxStep = 20
 
+export class Customer {
+    constructor(name, age, gender, progress = []) {
+        this.name = name
+        this.age = age
+        this.gender = gender
+        this.satisfactionProgress = progress
+    }
+    getGenderLabel() {
+        return getGenderLabelAndColor(this.gender).label
+    }
+}
 export default class CustomerDataset {
     constructor() {
         this.__dataset = Vue.observable([])
@@ -70,8 +81,9 @@ let ID_TRACK = 0
 export function nextId() {
     return ++ID_TRACK
 }
+
 export function makeCustomer(name, age, gender, satisfactionProgress = [0]) {
-    return { name, age, gender, satisfactionProgress }
+    return new Customer(name, age, gender, satisfactionProgress)
 }
 
 export function makeRandomManualCustomerObject() {
