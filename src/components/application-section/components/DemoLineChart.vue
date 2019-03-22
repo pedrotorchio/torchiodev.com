@@ -2,7 +2,9 @@
     article#demo-line-chart
         svg( :width="width" :height="height")
             g.chart-group( :transform="`translate(${padding/2}, ${padding/2})`")
-
+                g.line( v-for="(name, i) in ['female', 'male', 'unspecified', 'average']" :class="[ name ]" :key="i" )
+                    path
+                
 </template>
 <script>
 import { line as d3Line } from 'd3-shape'
@@ -112,40 +114,44 @@ export default {
             return newProgression
         },
         makeLine(name, points, style) {
-            const container = d3Select("#demo-line-chart svg g.chart-group")
-                .append('g')
-                .attr('class', `line ${name}`);
             style = {
                 color: style.color,
                 stroke: style.stroke || 1,
                 r: 2,
                 values:  Boolean(style.values)
             }
-            container
-                .selectAll('path')
-                .data(points)
-                .enter()
-                .append('path')
-                .attr('fill', 'none')
-                .attr('stroke', style.color)
-                .attr('stroke-width', style.stroke)
-                .attr('d', this.lineGenerator(points));
-            container
-                .append('g')
-                .attr('class', 'entries')
-                .selectAll('circle')
-                .data(points)
-                .enter()
-                .append('circle')
-                .attr('class', 'avg-entry')
-                .attr('r', style.r)
-                .style('fill', style.color)
+
+            const 
+                path = d3Select(`#demo-line-chart svg g.chart-group .line.${name} path`)
+                    .transition()
+                    .duration(200)
+                    .attr('d', this.lineGenerator(points))
+                    .attr('fill', 'none')
+                    .attr('stroke', style.color)
+                    .attr('stroke-width', style.stroke),
+                circles = d3Select(`#demo-line-chart svg g.chart-group .line.${name}`)
+                    .selectAll('circle')
+                    .data(points)
+            circles
+                .transition().duration(200)
                 .attr('cx', (d, i) => this.xScale(i))
                 .attr('cy', this.yScale);
+            circles
+                .enter()
+                .append('circle')
+                .attr('r', style.r)
+                .style('fill', style.color);
+
             if (style.values) {
-                container
-                    .selectAll('.entries text')
-                    .data(points)
+
+                const texts = d3Select(`#demo-line-chart svg g.chart-group .line.${name}`)
+                    .selectAll('text')
+                    .data(points);
+                texts
+                    .transition().duration(200)
+                    .attr('x', (d, i) => this.xScale(i) - 20)
+                    .attr('y', d => this.yScale(d) - 5);
+                texts
                     .enter()
                     .append('text')
                     .text(d=>d)
@@ -154,9 +160,6 @@ export default {
                     .attr('stroke', 'white')
                     .attr('stroke-width', .5)
                     .attr('font-weight', 'bold')
-                    .attr('class', 'avg-entry-value')
-                    .attr('x', (d, i) => this.xScale(i) - 20)
-                    .attr('y', d => this.yScale(d) - 5);
             }
         },
         draw() {
@@ -188,7 +191,7 @@ export default {
         customers: {
             deep: true,
             handler() {
-                this.remove()
+                // this.remove()
                 this.draw()
             }
         },
