@@ -24,7 +24,6 @@
                     input#demo-age( type="number" name="age" v-model.number="customer.age" min="10" max="100" step="5")
         .actions
             button.mdc-elevation--z2.green( :disabled="!done" @click="$emit('save', customer)" ) Save
-            button.mdc-elevation--z2.red( @click="$emit('return')" ) X
 
         //- label( for="demo-satisfaction" ) Satisfaction Level
         //- input#demo-satisfaction( type="range" min="0" max="100" step="5" placeholder="Full Name" )
