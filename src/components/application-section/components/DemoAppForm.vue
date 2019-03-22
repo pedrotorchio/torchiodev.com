@@ -3,7 +3,7 @@
         .content
             form
                 label( for="demo-full-name" ) Full Name
-                input#demo-full-name( type="text" placeholder="Full Name" name="full-name" v-model="customer.name" )
+                    input#demo-full-name( type="text" placeholder="Full Name" name="full-name" v-model="customer.name" )
 
                 label Gender
                 .gender-fields
@@ -40,7 +40,7 @@ export default {
     computed: {
         done() {
             const c = this.customer
-            return Boolean(c.age) && Boolean(c.gender || c.gender == 0) && Boolean(c.name)
+            return Boolean(c.age) && Boolean(c.gender || c.gender === 0) && Boolean(c.name)
         }
     }
 }
@@ -60,8 +60,10 @@ form
         width: 100%
         outline: none
         border: none
-        padding: 10px
+        padding: 2px 10px
         background: transparent
+        border-bottom: 1px solid lightgrey
+        margin-bottom: 1em
         &::placeholder
             color: rgba($color--text-dark, .5)
 
