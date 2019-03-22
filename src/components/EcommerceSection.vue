@@ -11,9 +11,13 @@
                     span.line.big Profitable
                     span.line.big Showcase
                 p.title-text
-                    | It has survived not only five centuries, 
-                    | but also the leap into electronic typesetting
-                    | remaining essentially unchanged.
+                    | Automatic, quick, 24/7/365.
+                    br
+                    u E-commerce
+                    |  provides 
+                    u targeted marketing
+                    |  and convenience to sell goods or services 
+                    | without middleman or geographical constraints.
 </template>
 <style lang="sass" scoped>
 @import '~@/styles/config'

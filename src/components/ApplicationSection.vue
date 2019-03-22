@@ -29,7 +29,8 @@
                     span.line.big Routine.
                     span.line.medium Make Life Easier.
                 p.title-text
-                    | It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, 
+                    u Easy to access, no installation required. 
+                    |  Users can easily access the application from any computer or mobile phone in the world.
 </template>
 <script>
 import '@/components/svg/tip-arrow'

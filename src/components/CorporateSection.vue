@@ -9,8 +9,8 @@
                         span.line.big Find You
                         span.line.medium Wherever they are
                     p.title-text
-                        | Lorem Ipsum is simply dummy text of the printing and typesetting industry. 
-                        | Lorem Ipsum has been the industry's standard dummy text
+                        | When you are present online, you offer much more than just marketing and reaching new customers, you also provide better customer service. 
+                        u Be available to your customers full time.
             .img-group.half-side
                 img.img-pc( src="@/assets/imgs/corporate/pc-big.png" )
                 img.img-girl( src="@/assets/imgs/corporate/girl-big.png" )
