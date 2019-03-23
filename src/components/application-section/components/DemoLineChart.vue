@@ -140,26 +140,35 @@ export default {
                 .style('fill', style.color);
 
             if (style.values) {
-                const offset = {
-                        x: -20,
-                        y: 10
+                const 
+                    xAxisStyle = {
+                        size: 12,
+                    },
+                    xAxisPosition = (d, i) => {
+                        let value = this.xScale(i)
+                        if (i === points.length - 1)
+                            value -= xAxisStyle.size
+                        return value
                     }
+
 
                 const texts = d3Select(`#demo-line-chart svg g.chart-group .line.${name}`)
                     .selectAll('text')
                     .data(points);
+                
                 texts
                     .transition().duration(200)
-                    .attr('x', (d, i) => this.xScale(i) + offset.x)
-                    .attr('y', d => this.yScale(d) + offset.y);
+                    .attr('x', xAxisPosition)
+                    .attr('y', this.height - xAxisStyle.size);
                 texts
                     .enter()
                     .append('text')
                     .text(d=>d)
-                    .attr('font-size', '12')
+                    .attr('font-size', xAxisStyle.size)
                     .attr('fill', style.color)
-                    .attr('stroke', 'white')
-                    .attr('stroke-width', .5)
+                    .attr('font-weight', 'bold')
+                    // .attr('stroke', 'white')
+                    // .attr('stroke-width', .5)
                     .attr('font-weight', 'bold')
             }
         },

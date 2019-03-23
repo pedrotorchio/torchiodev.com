@@ -90,7 +90,8 @@ export default {
 
 .phone-screen
     height: 234px
-    width: 134px
+    width: 135.4px
+    box-shadow: inset 0 0 3px 0 #000000
     background: white
     position: absolute
     z-index: 99

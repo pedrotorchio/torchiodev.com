@@ -31,8 +31,8 @@ export default {
         },
         headerClasses() {
             let pageColor = 'landing'
-
-            if (this.customer && this.customer.gender)
+            const c = this.customer
+            if (c && (c.gender || c.gender == 0))
                 pageColor = this.customer.getGenderLabel()
 
             return [ pageColor ]
@@ -74,6 +74,8 @@ export default {
     overflow: hidden
     font-size: 14px
     height: 100%
+    border: 1px solid #00000059
+    box-sizing: border-box
 
 header
     $height: $header-height
