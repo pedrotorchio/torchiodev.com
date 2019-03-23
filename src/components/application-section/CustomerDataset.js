@@ -1,4 +1,3 @@
-import Faker from 'faker'
 import Vue from 'vue'
 
 export const genderDataset = {
@@ -9,6 +8,41 @@ export const genderDataset = {
 export const satisfactionRange = [30, 100]
 export const satisfactionMaxStep = 20
 
+export class Faker {
+    constructor() {
+        this.names = {
+            female: [
+                'Glenda Roberts',
+                'Jeniffer Holmes',
+                'Marina J K',
+                'Lianne Joyner'
+            ],
+            male: [
+                'Robert Roberts',
+                'Peter S Jr',
+                'Bernard Rocky',
+                'John Jones'
+            ],
+            unspecified: [
+                'Alegra Beckham',
+                'Aiyla Cope',
+                'Gethin Castillo'
+            ]
+        }
+    }
+
+    getName(gender) {
+        
+        const 
+            randIndex = arr => Math.floor(Math.random() * arr.length), 
+            partition = getGenderLabelAndColor(gender).label.toLowerCase(),
+            array = this.names[partition],
+            i = randIndex(array),
+            name = this.names[partition].splice(i, 1)[0];
+        
+        return name
+    }
+}
 export class Customer {
     constructor(name, age, gender, progress = []) {
         this.name = name
@@ -85,17 +119,27 @@ export function nextId() {
 export function makeCustomer(name, age, gender, satisfactionProgress = []) {
     return new Customer(name, age, gender, satisfactionProgress)
 }
+const faker = new Faker()
+export function getRandomName(gender) {
+    return faker.getName(gender)
+}
+export function getRandomGender() {
+    return Math.random() < .15 ? 0 : Math.floor(Math.random() * 2 + 1);
+}
+export function getRandomAge() {
+    return Math.floor(Math.random() * 60 + 10);
+}
+export function makeRandomManualCustomerObject(gender) {
+    gender = gender || getRandomGender()
 
-export function makeRandomManualCustomerObject() {
-    const 
-        name = `${Faker.name.firstName()} ${Faker.name.lastName()}`,
-        age = Math.floor(Math.random() * 60 + 10),
-        gender = Math.random() < .15 ? 0 : Math.floor(Math.random() * 2 + 1);
+    const     
+        name = getRandomName(gender),
+        age = getRandomAge()
 
     return { name, age, gender }
 }
-export function makeRandomCustomer() {
-    const { name, age, gender } = makeRandomManualCustomerObject()
+export function makeRandomCustomer(genderParameter) {
+    const { name, age, gender } = makeRandomManualCustomerObject(genderParameter)
     return makeCustomer(name, age, gender)
 }
 export function getNextSatisfactionPoint(curr) {

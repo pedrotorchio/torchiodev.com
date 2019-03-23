@@ -80,6 +80,9 @@ export default {
             return progressions.reduce( (max, p) => p.length > max ? p.length : max, 0)
         },
         getAverageProgression(progressions) {
+            if (progressions.length == 0)
+                return []
+
             const
                 initial = generateArray(0, progressions[0].length)
             
@@ -193,3 +196,17 @@ export default {
     
 }
 </script>
+<style lang="sass" scoped>
+#demo-line-chart svg::v-deep circle.pulse
+    animation-name: pulse
+    animation-duration: 1s
+    animation-timing-function: ease-in-out
+    animation-iteration-count: infinite
+    animation-direction: alternate
+        
+@keyframes pulse
+  0%
+    r: 6
+  100%
+    r: 8
+</style>

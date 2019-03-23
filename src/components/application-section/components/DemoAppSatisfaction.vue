@@ -11,6 +11,8 @@
         
 </template>
 <script>
+import { select as d3Select } from 'd3-selection'
+
 export default {
     props: {
         customer: Object,
@@ -21,12 +23,55 @@ export default {
     computed: {
         progress() {
             return this.customer.satisfactionProgress.slice().reverse()
+        },
+        currEntryIndex() {
+            return this.customer.satisfactionProgress.length - 1
+        },
+        selections() {
+            const 
+                gender = this.customer.getGenderLabel().toLowerCase(),
+                index = this.currEntryIndex,
+                group = d3Select(`#demo-line-chart .line.${gender}`),
+                line = group.select('path'),
+                allCircles = group.selectAll('circle')
+
+            return { gender, index, group, line, allCircles }
         }
     },
     methods: {
         insert() {
             this.$emit('new-entry', this.newSatisfaction)
+        },
+        bringToFront() {
+            const { group } = this.selections;
+            group.each( function(g) {
+                this.parentNode.appendChild(this)
+            })
         }
+    },
+    watch: {
+
+        currEntryIndex: {
+            immediate: true,
+            handler() {
+                const 
+                    { allCircles, index } = this.selections,
+                    circle = allCircles.filter((d,i)=>i===index);
+
+                allCircles
+                    .classed('pulse', false)
+                circle
+                    .classed('pulse', true)
+            }
+        }
+    },
+    mounted() {
+        this.bringToFront()
+    },
+    beforeDestroy() {
+        const { allCircles } = this.selections
+
+        allCircles.classed('pulse', false)
     }
 }
 </script>
@@ -56,5 +101,4 @@ export default {
         background-color: rgba($color--male, .5)
     &:nth-child(even)
         background-color: rgba($color--female, .5)
-
 </style>
