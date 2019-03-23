@@ -12,7 +12,7 @@
                             h3 Age
 
                     .screen-2.mdc-elevation--z2
-                        demo-line-chart( :customers="dataset" :height="250" :width="500" :padding="10" )
+                        demo-line-chart( :customers="dataset" :height="200" :width="500" :padding="10" )
                         h3 Satisfaction Level
                     .phone.img-group
                         img( src="@/assets/imgs/application/phone-big.png" )

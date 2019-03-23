@@ -140,14 +140,18 @@ export default {
                 .style('fill', style.color);
 
             if (style.values) {
+                const offset = {
+                        x: -20,
+                        y: 10
+                    }
 
                 const texts = d3Select(`#demo-line-chart svg g.chart-group .line.${name}`)
                     .selectAll('text')
                     .data(points);
                 texts
                     .transition().duration(200)
-                    .attr('x', (d, i) => this.xScale(i) - 20)
-                    .attr('y', d => this.yScale(d) - 5);
+                    .attr('x', (d, i) => this.xScale(i) + offset.x)
+                    .attr('y', d => this.yScale(d) + offset.y);
                 texts
                     .enter()
                     .append('text')
@@ -172,7 +176,7 @@ export default {
 
             this.makeLine('average', this.generalAverageSatisfactionProgression, {
                 color: 'purple',
-                stroke: 2,
+                stroke: 2.5,
                 values: true
             })
         },

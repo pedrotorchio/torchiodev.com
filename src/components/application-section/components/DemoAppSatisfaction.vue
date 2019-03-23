@@ -33,21 +33,21 @@ export default {
                 index = this.currEntryIndex,
                 group = d3Select(`#demo-line-chart .line.${gender}`),
                 line = group.select('path'),
-                allCircles = group.selectAll('circle')
+                allCircles = group.selectAll('circle'),
+                averageGroup = d3Select(`#demo-line-chart .line.average`)
 
-            return { gender, index, group, line, allCircles }
+            return { gender, index, group, line, allCircles, averageGroup }
         }
     },
     methods: {
         insert() {
             this.$emit('new-entry', this.newSatisfaction)
         },
-        bringToFront() {
-            const { group } = this.selections;
+        bringToFront(group) {
             group.each( function(g) {
                 this.parentNode.appendChild(this)
             })
-        }
+        },
     },
     watch: {
 
@@ -66,12 +66,12 @@ export default {
         }
     },
     mounted() {
-        this.bringToFront()
+        this.bringToFront(this.selections.group)
     },
     beforeDestroy() {
         const { allCircles } = this.selections
-
         allCircles.classed('pulse', false)
+        this.bringToFront(this.selections.averageGroup)
     }
 }
 </script>

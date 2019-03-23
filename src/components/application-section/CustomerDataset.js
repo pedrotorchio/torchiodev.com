@@ -166,8 +166,8 @@ export function getNextSatisfactionPoint(curr) {
     return Math.floor(keepWithinRange(curr + step))
 }
 export function makeSatisfactionProgression(count) {
-    const initial = Math.random() * satisfactionRange[1]
-    let values = []
+    const initial = Math.random() * 30 + satisfactionRange[0]
+    let values = [initial]
     for(let i = 0 ; i < count ; i++) {
         values.push(getNextSatisfactionPoint(values[i-1]))
     }
