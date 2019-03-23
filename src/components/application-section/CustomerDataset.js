@@ -161,9 +161,12 @@ export function getNextSatisfactionPoint(curr) {
         step = increase(step)
     else if (shouldGoDown()) // if should go down, don't go too much
         step = -decrease(step)
-    
-    
-    return Math.floor(keepWithinRange(curr + step))
+
+    let value = Math.floor(keepWithinRange(curr + step))
+    while(value === curr)
+        value = getNextSatisfactionPoint(curr)
+
+    return value
 }
 export function makeSatisfactionProgression(count) {
     const initial = getNextSatisfactionPoint(satisfactionRange[0])
