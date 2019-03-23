@@ -1,6 +1,8 @@
 <template lang="pug">
     section#me-section.page-section
-        a.btn( href="/resume.pdf" title="Resume updated on 13/MARCH/2019" target="_blank") Who Am I
+        a.btn( href="/resume.pdf" title="Resume updated on 13/MARCH/2019" target="_blank") 
+            | Who Am I 
+            span.small get my resume
         video( ref="video" autoplay muted loop playsinline @canplaythrough="play" @load="play" )
             source( src="/video/plasma-effect.mp4" type="video/mp4" )
 </template>
@@ -36,6 +38,9 @@ video
     object-fit: cover
     width: 100%
     filter: hue-rotate(30deg) blur(8px)
+.small
+    display: block
+    font-size: 18px
 </style>
 <script>
 export default {

@@ -41,7 +41,13 @@ export default {
     },
     methods: {
         insert() {
-            this.$emit('new-entry', this.newSatisfaction)
+            const 
+                progress = this.customer.satisfactionProgress,
+                length = progress.length,
+                last = progress[length-1];
+
+            if (last != this.newSatisfaction && this.currEntryIndex < 20)
+                this.$emit('new-entry', this.newSatisfaction)
         },
         bringToFront(group) {
             group.each( function(g) {

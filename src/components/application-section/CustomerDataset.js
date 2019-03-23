@@ -1,9 +1,9 @@
 import Vue from 'vue'
 
 export const genderDataset = {
-    0: { label: "Unspecified", color: "#81c200" },
-    1: { label: "Male", color: "#ffc107" },
-    2: { label: "Female", color: "#FF5722" }
+    0: { label: "Unspecified", color: "#ffe042  " },
+    1: { label: "Male", color: "#1896ea" },
+    2: { label: "Female", color: "#ff3838" }
 }
 export const satisfactionRange = [30, 100]
 export const satisfactionMaxStep = 20
@@ -166,7 +166,7 @@ export function getNextSatisfactionPoint(curr) {
     return Math.floor(keepWithinRange(curr + step))
 }
 export function makeSatisfactionProgression(count) {
-    const initial = Math.random() * 30 + satisfactionRange[0]
+    const initial = getNextSatisfactionPoint(satisfactionRange[0])
     let values = [initial]
     for(let i = 0 ; i < count ; i++) {
         values.push(getNextSatisfactionPoint(values[i-1]))

@@ -129,15 +129,20 @@ export default {
                 circles = d3Select(`#demo-line-chart svg g.chart-group .line.${name}`)
                     .selectAll('circle')
                     .data(points)
-            circles
-                .transition().duration(200)
-                .attr('cx', (d, i) => this.xScale(i))
-                .attr('cy', this.yScale);
+            // circles
+            //     .transition().duration(200)
+            //     .attr('cx', (d, i) => this.xScale(i))
+            //     .attr('cy', this.yScale);
             circles
                 .enter()
                 .append('circle')
                 .attr('r', style.r)
-                .style('fill', style.color);
+                .style('fill', style.color)
+                .merge(circles)
+                .transition().duration(200)
+                .attr('cx', (d, i) => this.xScale(i))
+                .attr('cy', this.yScale);
+
 
             if (style.values) {
                 const 
@@ -156,10 +161,10 @@ export default {
                     .selectAll('text')
                     .data(points);
                 
-                texts
-                    .transition().duration(200)
-                    .attr('x', xAxisPosition)
-                    .attr('y', this.height - xAxisStyle.size);
+                // texts
+                //     .transition().duration(200)
+                //     .attr('x', xAxisPosition)
+                //     .attr('y', this.height - xAxisStyle.size);
                 texts
                     .enter()
                     .append('text')
@@ -170,6 +175,10 @@ export default {
                     // .attr('stroke', 'white')
                     // .attr('stroke-width', .5)
                     .attr('font-weight', 'bold')
+                    .merge(texts)
+                    .transition().duration(200)
+                    .attr('x', xAxisPosition)
+                    .attr('y', this.height - xAxisStyle.size);
             }
         },
         draw() {

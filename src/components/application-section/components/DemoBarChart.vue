@@ -19,11 +19,12 @@
 
 </template>
 <style lang="sass" scoped>
+@import './app-config'
 #demo-bar-chart
     box-sizing: border-box
 .chart-group
     position: relative
-$color: #607d8b
+$color: $color--average
 ul
     display: flex
     justify-content: space-between
