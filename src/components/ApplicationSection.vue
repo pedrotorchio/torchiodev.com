@@ -13,7 +13,7 @@
 
                     .screen-2.mdc-elevation--z2
                         demo-line-chart( :customers="dataset" :height="200" :width="500" :padding="10" )
-                        h3 Satisfaction Level Averages
+                        h3 Lastest Satisfaction Averages
                     .phone.img-group
                         img( src="@/assets/imgs/application/phone-big.png" )
                         .phone-screen

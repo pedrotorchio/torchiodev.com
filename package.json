@@ -19,6 +19,7 @@
     "d3-transition": "^1.2.0",
     "d3pie": "^0.2.1",
     "normalize.css": "^8.0.1",
+    "smooth-scroll": "^16.0.3",
     "vue": "^2.6.6",
     "vue-router": "^3.0.1"
   },

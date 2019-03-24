@@ -6,7 +6,7 @@
                     span {{ progress.length - i }} 
                     | {{ entry }}
         .actions
-            button.mdc-elevation--z2( @click="insert") +
+            button.mdc-elevation--z2.go( @click="insert" :style="{ background: color }") +
             input( type="number" name="newSatisfaction" v-model.number="newSatisfaction" min="0" max="100" step="5")
         
 </template>
@@ -37,6 +37,9 @@ export default {
                 averageGroup = d3Select(`#demo-line-chart .line.average`)
 
             return { gender, index, group, line, allCircles, averageGroup }
+        },
+        color() {
+            return this.customer.getGenderColor()
         }
     },
     methods: {

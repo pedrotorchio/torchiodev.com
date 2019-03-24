@@ -1,5 +1,5 @@
 <template lang="pug">
-    section#portfolio-section.page-section
+    section#portfolio.page-section
         .inner-section.padded
             h2 Portfolio
             .content( :class="{ selected, 'show-tip': showTip }")
@@ -74,7 +74,7 @@ export default {
 @import url('https://fonts.googleapis.com/css?family=Dosis:200,400')
 
 $height: ($size--max-width - $size--section-padding)/2
-#portfolio-section    
+#portfolio    
     background: $color--maroon
 .grid
     display: flex

@@ -1,6 +1,6 @@
 <template lang="pug">
     section#me-section.page-section
-        a.btn( href="/resume.pdf" title="Resume updated on 13/MARCH/2019" target="_blank") 
+        a.btn( href="/my-resume.pdf" title="Resume updated on 13/MARCH/2019" target="_blank") 
             | Who Am I 
             span.small get my resume
         video( ref="video" autoplay muted loop playsinline @canplaythrough="play" @load="play" )

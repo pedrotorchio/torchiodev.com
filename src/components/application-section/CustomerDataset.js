@@ -53,6 +53,9 @@ export class Customer {
     getGenderLabel() {
         return getGenderLabelAndColor(this.gender).label
     }
+    getGenderColor() {
+        return getGenderLabelAndColor(this.gender).color
+    }
 }
 export default class CustomerDataset {
     constructor() {

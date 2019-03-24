@@ -23,13 +23,13 @@
                 label( for="#demo-age" ) Age
                     input#demo-age( type="number" name="age" v-model.number="customer.age" min="10" max="100" step="5")
         .actions
-            button.mdc-elevation--z2.green( :disabled="!done" @click="$emit('save', customer)" ) Save
+            button.mdc-elevation--z2.go( :disabled="!done" @click="$emit('save', customer)" :style="{ background: color }" ) Save
 
         //- label( for="demo-satisfaction" ) Satisfaction Level
         //- input#demo-satisfaction( type="range" min="0" max="100" step="5" placeholder="Full Name" )
 </template>
 <script>
-import { makeCustomer } from '../CustomerDataset.js';
+import { makeCustomer, getGenderLabelAndColor } from '../CustomerDataset.js';
 
 export default {
     data: () => ({
@@ -39,6 +39,10 @@ export default {
         done() {
             const c = this.customer
             return Boolean(c.age) && Boolean(c.gender || c.gender === 0) && Boolean(c.name)
+        },
+        color() {
+            const c = this.customer
+            return this.done && c && (c.gender || c.gender === 0) && getGenderLabelAndColor(c.gender).color || "#cccccc"
         }
     }
 }
@@ -47,6 +51,7 @@ export default {
 <style lang="sass" src="./_app-body.sass" scoped></style>
 <style lang="sass" scoped>
 @import '~@/styles/config'
+@import './app-config'
 form
     font-size: 12px
     color: #072c5d
@@ -97,13 +102,13 @@ form
     .male, .female
         width: 50%
     .male
-        background-color: #ffc107
+        background-color: $color--male
     .female
-        background-color: #FF5722
+        background-color: $color--female
 
     .unspecified
         width: 100%
-        background-color: #81c200
+        background-color: $color--unspecified
 
 button
     font-size: 18px

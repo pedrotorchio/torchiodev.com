@@ -1,18 +1,26 @@
 <template lang="pug">
     nav#main-nav.page-section
         .inner-section    
-            router-link( to = "/" )
-                svg-loader#logo( name="logo-vazado" )
+            a( href="#corporate" )
+                svg-loader#favicon( name="favicon" )
             ul
                 li
-                    router-link( to = "/about" ) About
+                    a( href="#services" ) What I do
                 li
-                    router-link( to = "/about#contact" ) Contact
+                    a( href="#portfolio" ) What I've done
+                li
+                    a( href = "/my-resume.pdf" target="_blank" ) About Me
+                li
+                    a( href = "#contact" ) Contact
 </template>
 <script>
-import '@/components/svg/logo-vazado'
+import '@/components/svg/favicon'
 export default {}
 </script>
+<style lang="sass">
+html
+    scroll-behavior: smooth
+</style>
 
 <style lang="sass" scoped>
 @import "~@/styles/config"
@@ -33,8 +41,9 @@ nav#main-nav
     align-items: center
     padding: 1em
     height: $size--header-height
-#logo
-    width: 200px
+#favicon
+    
+    height: 80px
     display: block
     
 ul

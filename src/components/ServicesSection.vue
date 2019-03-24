@@ -1,5 +1,5 @@
 <template lang="pug">
-    section#services-section.page-section
+    section#services.page-section
         .inner-section
             ul.services
                 li( v-for="(service, i) in services" :key="i")
@@ -30,7 +30,7 @@ export default {
 }
 </script>
 <style lang="sass" scoped>
-#services-section
+#services
     overflow: visible
     z-index: 99
 ul.services

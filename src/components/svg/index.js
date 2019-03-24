@@ -1,3 +1,4 @@
 /* eslint-disable */
-require('./logo-vazado')
+require('./favicon')
+require('./logo-vazada')
 require('./tip-arrow')

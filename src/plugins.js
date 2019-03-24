@@ -25,3 +25,10 @@ Vue.directive('out-click', {
         document.removeEventListener('touchstart', handleOutsideClick)
     }
 })
+
+import SmoothScroll from 'smooth-scroll'
+new SmoothScroll('a[href*="#"]', {
+    clip: true,
+    offset: 100,
+    ease: 'easeOutQuint'
+});

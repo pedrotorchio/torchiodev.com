@@ -1,9 +1,9 @@
 <template lang="pug">
-    section#email-section.page-section
+    section#contact.page-section
         | PEDRO@TORCHIODEV.COM
 </template>
 <style lang="sass" scoped>
-#email-section
+#contact
     background-color: black
     color: white
     font-weight: lighter  
