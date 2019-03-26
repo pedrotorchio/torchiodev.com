@@ -24,6 +24,7 @@
     display: inline
 .service, h3
     display: inline-block
+
 h3, p, h4
     font-size: 18px
     line-height: 1.2em
@@ -35,6 +36,7 @@ h4
     font-weight: bold
     font-size: 24px
     margin-bottom: .5em
+    text-shadow: $shadow--netflix
 
 p
     white-space: normal
@@ -72,6 +74,7 @@ $border-radius: 20px
     .bubble
         transform: scale(1)
         opacity: 1
+        z-index: 99999
 
 </style>
 

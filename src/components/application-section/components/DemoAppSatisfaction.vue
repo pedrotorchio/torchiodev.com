@@ -1,5 +1,9 @@
 <template lang="pug">
     #demo-app-satisfaction
+        h4.app-section-title
+            | Satisfaction
+            br
+            | Entries
         .content
             ul.satisfaction-entries
                 li(v-for="(entry, i) in progress")
@@ -110,4 +114,7 @@ export default {
         background-color: rgba($color--male, .5)
     &:nth-child(even)
         background-color: rgba($color--female, .5)
+
+.app-section-title
+    
 </style>

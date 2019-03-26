@@ -11,7 +11,7 @@
                                 h3.title {{ selectedFallback.title  }}
                                 h4.subtitle( :class="{ separator: selectedFallback.subtitle }" ) {{ selectedFallback.subtitle }}
                             span.date {{ selectedFallback.date }}
-                        a.url( :href="selectedFallback.url") {{ selectedFallback.url }}
+                        a.url( :href="selectedFallback.url" target="_blank" @click.stop="" ) {{ selectedFallback.url }}
                         ul.features
                             li( v-for="(feat, i) in selectedFallback.features" :key="i" ) {{ feat }}
                         ul.tags
@@ -71,11 +71,11 @@ export default {
 </script>
 <style lang="sass" scoped>
 @import '~@/styles/config'
-@import url('https://fonts.googleapis.com/css?family=Dosis:200,400')
+
 
 $height: ($size--max-width - $size--section-padding)/2
 #portfolio    
-    background: $color--maroon
+    background: $color--text-dark
 .grid
     display: flex
     flex-wrap: wrap
@@ -130,7 +130,7 @@ $height: ($size--max-width - $size--section-padding)/2
     display: flex
     justify-content: flex-start
     align-items: flex-start
-    font-family: 'Dosis', 'Open Sans', sans-serif
+    // font-family: 'Dosis', 'Open Sans', sans-serif
     margin-bottom: 1em
     font-size: 24px
 
@@ -157,6 +157,7 @@ $height: ($size--max-width - $size--section-padding)/2
         .title
             letter-spacing: .2em
             text-transform: uppercase
+            text-shadow: $shadow--netflix
 .url
     font-size: 18px
     color: white
@@ -197,7 +198,7 @@ h2
     color: white
     text-transform: uppercase
     letter-spacing: .4em
-    text-shadow: 3px 0px 0 black
+    text-shadow: $shadow--netflix
     margin: 0
 </style>
 

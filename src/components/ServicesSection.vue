@@ -32,7 +32,6 @@ export default {
 <style lang="sass" scoped>
 #services
     overflow: visible
-    z-index: 99
 ul.services
     display: flex
     justify-content: space-around

@@ -14,8 +14,7 @@
                     | Automatic, quick, 24/7/365.
                     br
                     u E-commerce
-                    |  provides 
-                    u targeted marketing
+                    |  provides targeted marketing
                     |  and convenience to sell goods or services 
                     | without middleman or geographical constraints.
 </template>

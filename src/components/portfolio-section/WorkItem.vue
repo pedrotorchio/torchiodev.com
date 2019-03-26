@@ -21,10 +21,16 @@ $transition-timing: ease-out
 
     z-index: 9
     
+    &::before
+        z-index: 99
     &:hover
-        z-index: 999
+        z-index: 99
+        &::before
+            z-index: 999
     &.toggled
-        z-index: 9999
+        z-index: 999
+        &::before
+            z-index: 9999   
     &:hover, &.toggled
         
         img
@@ -59,7 +65,6 @@ $transition-timing: ease-out
     display: block
     background-color: rgba(black, .5)
     opacity: 1
-    z-index: 99
 
 $colors: (#ffc107, #3f51b5, #009688, #ff5722, #9c27b0, #f44336, #00bcd4)
 @for $i from 1 through length($colors)

@@ -2,7 +2,7 @@
     nav#main-nav.page-section
         .inner-section    
             a( href="#corporate" )
-                svg-loader#favicon( name="favicon" )
+                svg-loader#favicon( name="logo-vazada" )
             ul
                 li
                     a( href="#services" ) What I do
@@ -14,7 +14,7 @@
                     a( href = "#contact" ) Contact
 </template>
 <script>
-import '@/components/svg/favicon'
+import '@/components/svg/logo-vazada'
 export default {}
 </script>
 <style lang="sass">
@@ -30,7 +30,7 @@ $item-height: 2em
 $font-size: 18px
 
 nav#main-nav
-    z-index: 99999999999999999
+    z-index: 99999999
     text-transform: uppercase
     font-size: $font-size
     position: fixed

@@ -19,11 +19,14 @@ export default {
 <style lang="sass">
 
 @import "~@/styles/config"
+// @import url('https://fonts.googleapis.com/css?family=Dosis:300,400,700')
 @import url('https://fonts.googleapis.com/css?family=Open+Sans:300,400,700')
+
 
 body
   color: $color--text-dark
   font-family: 'Open Sans', sans-serif
+  font-weight: 100
   user-select: none
 </style>
 

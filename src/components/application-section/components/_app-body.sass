@@ -1,6 +1,7 @@
 @import './app-config'
 
 .content
+    flex: 1 1 auto
     overflow-y: auto
     overflow-x: hidden
     height: calc(100% - #{$header-height})
@@ -19,6 +20,7 @@ input
     outline: none
 .actions
     display: flex
+    flex: 0 0 auto
     input, button
         flex: 1 0 50%
         text-align: center
@@ -28,3 +30,7 @@ button
         background: $color--male
     &.no-go
         background: $color--female
+h4.app-section-title
+    flex: 0 0 auto
+    font-size: 14px
+    margin: 0.5em

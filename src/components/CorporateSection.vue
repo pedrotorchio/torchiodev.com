@@ -15,7 +15,7 @@
                         u Be available full time.
                     
             .half-side.logo-container
-                svg-loader#logo( name="logo-vazada" )
+                //- svg-loader#logo( name="logo-vazada" )
             .img-group
                 img.img-pc( src="@/assets/imgs/corporate/woman-pc-2.png" )
                 

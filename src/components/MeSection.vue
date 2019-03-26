@@ -1,36 +1,45 @@
 <template lang="pug">
     section#me-section.page-section
-        a.btn( href="/my-resume.pdf" title="Resume updated on 13/MARCH/2019" target="_blank") 
-            | Who Am I 
-            span.small get my resume
+        .container
+            a.btn( href="/my-resume.pdf" title="Resume updated on 13/MARCH/2019" target="_blank") 
+                | Who Am I 
+                span.small get my resume
+            h3 PEDRO@TORCHIODEV.COM
         video( ref="video" autoplay muted loop playsinline @canplaythrough="play" @load="play" )
             source( src="/video/plasma-effect.mp4" type="video/mp4" )
 </template>
 <style lang="sass" scoped>
 @import '~@/styles/config'
 #me-section
-    height: 200px
+    height: 400px
     background: black
-.btn
-    $color: $color--yellow
+$color: $color--yellow
+.container
+    color: $color
+    top: 50%
+    left: 50%
+    transform: translate(-50%, -50%)
+    z-index: 999
+    position: absolute
+
+
+.btn, h3
+    color: inherit
     cursor: pointer
     display: block
-    position: absolute
     width: 500px
     letter-spacing: .3em
     font-weight: bold
     padding: 5px
-    top: 50%
     text-transform: uppercase
-    font-size: 48px
     text-align: center
-    left: 50%
-    -webkit-transform: translate(-50%, -50%)
-    transform: translate(-50%, -50%)
-    z-index: 999
-    border: 5px solid $color
-    color: $color
     text-shadow: 3px 0px 0px black
+h3
+    font-weight: 100
+.btn
+    border: 5px solid $color
+    font-size: 48px
+    font-family: impact
 
 video
     position: absolute
@@ -46,6 +55,8 @@ video
 export default {
     methods: {
         play() {
+            if (this.$refs['video'].playbackRate)
+                this.$refs['video'].playbackRate = .6
             this.$refs['video'].play()
         }
     }

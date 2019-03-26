@@ -98,5 +98,9 @@ header
         background: rgba(desaturate($color--unspecified, $desaturation), $opacity)
 .body
     height: calc(100% - #{$header-margin-bottom} - #{$header-height})
+    display: flex
+    flex-direction: column
+    align-items: stretch
+    justify-content: flex-start
 </style>
 

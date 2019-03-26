@@ -1,15 +1,20 @@
 <template lang="pug">
     section#contact.page-section
-        | PEDRO@TORCHIODEV.COM
+        span Pedro Torchio
+        span From Brazil
+        span Living in Melbourne, Australia
+        span PEDRO@TORCHIODEV.COM
 </template>
 <style lang="sass" scoped>
 #contact
+    display: flex
+    justify-content: space-around
     background-color: black
     color: white
     font-weight: lighter  
     text-align: center
-    font-size: 24px
+    font-size: 18px
     letter-spacing: 0.25em
-    padding: 50px
+    padding: 10px
 </style>
 
