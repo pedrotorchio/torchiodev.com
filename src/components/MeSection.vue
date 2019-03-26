@@ -41,7 +41,7 @@ h3
     font-size: 48px
     font-family: impact
 
-video
+.video
     position: absolute
     height: 100%
     object-fit: cover

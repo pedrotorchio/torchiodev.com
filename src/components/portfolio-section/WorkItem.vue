@@ -1,7 +1,7 @@
 <template lang="pug">
-    .work-item
-        app-video( :src="videoUrl" :autoplay="false" )
+    .work-item( @mouseover="playVideo" @mouseleave="stopVideo")
         img( :src="work.getImgSrc()" )
+        app-video( ref="video" :src="videoUrl" :autoplay="false" )
 </template>
 <script>
 import AppVideo from '../AppVideo'
@@ -13,6 +13,14 @@ export default {
     computed: {
         videoUrl() {
             return `/video/portfolio/${this.work.imgsFolder}.mp4`
+        }
+    },
+    methods: {
+        playVideo() {
+            this.$refs['video'].play()
+        },
+        stopVideo() {
+            this.$refs['video'].stop()
         }
     }
 }
@@ -42,19 +50,24 @@ $transition-timing: ease-out
         
         img
             box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22)
-        img, &::before
+        img, &::before, .video
             transition-duration: nth($transition-duration, 1)
             transform: scale(1.1)
 
         &::before
             opacity: 0
-
-    h4, img
+    &:hover .video.running
+        opacity: 1
+    &.toggled .video
+        opacity: 0 !important
+    h4, img, .video
         position: absolute
 
+    .video
+        opacity: 0
     img
         box-shadow: 0 0 0 0 rgba(black, 0)
-    img, &::before
+    img, &::before, .video
         transition-property: transform, opacity, box-shadow
         transition-duration: nth($transition-duration, 2)
         transition-timing-function: $transition-timing

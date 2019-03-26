@@ -4,7 +4,10 @@
             h2 Portfolio
             .content( :class="{ selected, 'show-tip': showTip }")
                 .half-side.description
-                    span.tip Select a work from the grid
+                    p.tip 
+                        | Hover and click to watch in use and
+                        br
+                        | see details of any work in the grid
                     .details
                         .heading
                             .title-group
