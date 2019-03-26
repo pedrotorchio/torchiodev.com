@@ -25,16 +25,15 @@ export function makeEmptyWork() {
 export default [
     new Work('Nabuco Magazine', null, '11/2017', new URL('http://www.revistanabuco.com.br'), [
         'Government funded blog and magazine',
-        'Self managed Wordpress content, with advanced layout tools',
+        'Self managed content, with advanced layout tools',
         'Multiple authors and columns',
-        'Fully customized theme and functionalities',
-        'Progressively enhanced content (no scripting required)'
+        'Fully customized theme and functionalities'
     ],[
-        'wordpress', 'blog', 'magazine', 'progressive-enhancement', 'self-managed'
+        'wordpress', 'blog', 'magazine', 'self-managed'
     ],[ 'cover-full.jpg' ], 'nabuco'),
     new Work('Reato', 'Occupational Therapy', '01/2019', new URL('https://www.toreato.com.br'), [
         'Static corporate website',
-        'Prerendered single page, for better SEO',
+        'Prerendered single page, for improved SEO',
         'Full of simple animations'
     ],[
         'static', 'single-page', 'pre-render', 'animation', 'vuejs'
@@ -58,9 +57,10 @@ export default [
         'Ongoing application for tracking patients routine activities',
         "Stores patients' activities data",
         'Processes data and converts in advanced interactive visualizations',
+        'Advanced animations',
         'Restful Api built with Laravel'
     ],[
-        'application', 'animation', 'single-page', 'data-visualization', 'restful-api', 'laravel'
+        'application', 'animation', 'single-page', 'data-visualization', 'restful-api', 'laravel', 'animation'
     ],[ 'data-visualization-hover.jpg' ], 'keepup'),
 ]
 

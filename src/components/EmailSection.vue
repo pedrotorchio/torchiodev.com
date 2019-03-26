@@ -1,5 +1,5 @@
 <template lang="pug">
-    section#contact.page-section
+    section#contact
         span Pedro Torchio
         span From Brazil
         span Living in Melbourne, Australia
@@ -16,5 +16,9 @@
     font-size: 18px
     letter-spacing: 0.25em
     padding: 10px
+
+    span
+        user-select: all
+        cursor: text
 </style>
 

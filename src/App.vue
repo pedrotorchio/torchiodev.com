@@ -27,6 +27,5 @@ body
   color: $color--text-dark
   font-family: 'Open Sans', sans-serif
   font-weight: 100
-  user-select: none
 </style>
 

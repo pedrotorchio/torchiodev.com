@@ -4,7 +4,7 @@
             a.btn( href="/my-resume.pdf" title="Resume updated on 13/MARCH/2019" target="_blank") 
                 | Who Am I 
                 span.small get my resume
-            h3 PEDRO@TORCHIODEV.COM
+            h3.email PEDRO@TORCHIODEV.COM
         video( ref="video" autoplay muted loop playsinline @canplaythrough="play" @load="play" )
             source( src="/video/plasma-effect.mp4" type="video/mp4" )
 </template>
@@ -21,6 +21,7 @@ $color: $color--yellow
     transform: translate(-50%, -50%)
     z-index: 999
     position: absolute
+    cursor: initial
 
 
 .btn, h3
@@ -50,6 +51,9 @@ video
 .small
     display: block
     font-size: 18px
+.email
+    user-select: all
+    cursor: text
 </style>
 <script>
 export default {
