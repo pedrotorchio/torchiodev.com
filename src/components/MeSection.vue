@@ -5,8 +5,7 @@
                 | Who Am I 
                 span.small get my resume
             h3.email PEDRO@TORCHIODEV.COM
-        video( ref="video" autoplay muted loop playsinline @canplaythrough="play" @load="play" )
-            source( src="/video/plasma-effect.mp4" type="video/mp4" )
+        app-video( src="/video/plasma-effect.mp4" )
 </template>
 <style lang="sass" scoped>
 @import '~@/styles/config'
@@ -56,13 +55,8 @@ video
     cursor: text
 </style>
 <script>
+import AppVideo from './AppVideo'
 export default {
-    methods: {
-        play() {
-            if (this.$refs['video'].playbackRate)
-                this.$refs['video'].playbackRate = .6
-            this.$refs['video'].play()
-        }
-    }
+    components: { AppVideo }
 }
 </script>

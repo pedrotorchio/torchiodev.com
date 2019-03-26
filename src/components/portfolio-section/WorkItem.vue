@@ -1,12 +1,19 @@
 <template lang="pug">
     .work-item
-        h4
+        app-video( :src="videoUrl" :autoplay="false" )
         img( :src="work.getImgSrc()" )
 </template>
 <script>
+import AppVideo from '../AppVideo'
 export default {
+    components: { AppVideo },
     props: {
         work: Object
+    },
+    computed: {
+        videoUrl() {
+            return `/video/portfolio/${this.work.imgsFolder}.mp4`
+        }
     }
 }
 </script>
