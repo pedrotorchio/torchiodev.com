@@ -9,7 +9,7 @@
 </template>
 <style lang="sass" scoped>
 @import '~@/styles/config'
-
+@import '~media-query-mixins/_mixins.scss'
 .service
     $height: 100px
     position: relative
@@ -53,8 +53,12 @@ $border-radius: 20px
     border-top-left-radius: 0px
     background: #072c5dcf
     color: white
-    max-width: 600px
-    min-width: 350px
+    max-width: 350px
+    box-sizing: border-box
+    +lg
+        width: auto
+        max-width: 600px
+        min-width: 350px
     transform: scale(0)
     transform-origin: top left
     opacity: 0
