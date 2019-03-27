@@ -17,16 +17,22 @@ export default {
     },
     methods: {
         playVideo() {
-            this.$refs['video'].play()
+            const v = this.$refs['video']
+            if(v)
+                v.play()
         },
         stopVideo() {
-            this.$refs['video'].stop()
+            const v = this.$refs['video']
+            if(v)
+                v.stop()
         }
     }
 }
 </script>
 
 <style lang="sass" scoped>
+@import '~media-query-mixins/_mixins.scss'
+
 $transition-duration: (1s, .2s)
 $transition-timing: ease-out
 .work-item
@@ -64,7 +70,10 @@ $transition-timing: ease-out
         position: absolute
 
     .video
+        display: none
         opacity: 0
+        +lg
+            display: block
     img
         box-shadow: 0 0 0 0 rgba(black, 0)
     img, &::before, .video

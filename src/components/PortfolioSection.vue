@@ -4,10 +4,9 @@
             h2 Portfolio
             .content( :class="{ selected, 'show-tip': showTip }")
                 .half-side.description
-                    p.tip 
-                        | Hover and click to watch the use and
-                        br
-                        | see details of any work in the grid
+                    p.tip
+                        span Hover to watch the use and 
+                        | click to see details of any work in the grid
                     .details
                         .heading
                             .title-group
@@ -74,7 +73,7 @@ export default {
 </script>
 <style lang="sass" scoped>
 @import '~@/styles/config'
-
+@import '~media-query-mixins/_mixins.scss'
 
 $height: ($size--max-width - $size--section-padding)/2
 #portfolio    
@@ -95,13 +94,18 @@ $height: ($size--max-width - $size--section-padding)/2
     opacity: 0
 .tip
     @extend %tip-hidden
-    text-align: center
+    text-align: left
     display: block
     letter-spacing: .4em
     position: absolute
-    white-space: nowrap
+    white-space: normal
     top: 50%
     left: 50%
+
+    span
+        display: none
+        +lg
+            display: inline
 
 .show-tip .tip
     transform: translateY(-50%) translateX(-50%)
@@ -112,7 +116,10 @@ $height: ($size--max-width - $size--section-padding)/2
 .content
     display: flex
     color: white
-    height: $height
+    min-height: $height
+    +lg
+        min-height: initial
+        height: $height
         
     &.show-tip
     &.selected
@@ -126,7 +133,9 @@ $height: ($size--max-width - $size--section-padding)/2
     transform: translateX(100px)
     opacity: 0
     font-weight: lighter
-    padding: 50px 25px
+    padding: 50px 0
+    +lg
+        padding: 50px 25px
 
 
 .heading
@@ -138,7 +147,9 @@ $height: ($size--max-width - $size--section-padding)/2
     font-size: 24px
 
     .date
-        font-size: 16px
+        font-size: 14px
+        +lg
+            font-size: 16px
         flex: 0 0 auto
         text-align: right
         letter-spacing: .2em
@@ -176,7 +187,8 @@ $height: ($size--max-width - $size--section-padding)/2
         
 .tags
     font-size: 14px
-    width: 60%
+    +lg
+        width: 60%
     margin: 0 auto
     text-align: center
     li
