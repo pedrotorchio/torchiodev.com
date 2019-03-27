@@ -1,7 +1,7 @@
 <template lang="pug">
     section#application-section.page-section.padded
         .inner-section
-            .app-section.half-side
+            .app-section.responsive.half-side
                 .limited-width
                     .screen-1.mdc-elevation--z2
                         #pie-chart.screen-half
@@ -22,7 +22,7 @@
                         svg-loader( name="tip-arrow" )
                         h3.textual-tip Try this demo
 
-            .title-group.half-side
+            .title-group.responsive.half-side
                 h2.block-title
                     span.line.big Transform
                     span.line.big Your Work
@@ -57,12 +57,16 @@ export default {
 
 <style lang="sass" scoped>
 @import "~@/styles/config"
+@import '~media-query-mixins/_mixins.scss'
 #application-section
     $bg-blue: #f2f6ff
     background: radial-gradient(circle 60vw at left bottom, white 0%, #{$bg-blue} 100%)
 .inner-section
     display: flex
+    flex-direction: column-reverse
     align-items: center
+    +lg
+        flex-direction: row
 
     
 .screen-1, .screen-2
@@ -86,6 +90,14 @@ export default {
         position: absolute
         bottom: 0
         left: 0
+.title-group
+    align-self: flex-start
+    +rLg
+        display: flex
+        justify-content: space-between
+        align-items: center
+        .title-text
+            margin-left: 2em
 
 .phone-screen
     height: 234px
