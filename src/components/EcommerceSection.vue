@@ -5,18 +5,19 @@
                     img( src="@/assets/imgs/ecommerce/clothes-display.png")
                     .btn.mdc-elevation--z2 Purchase
             .title-group.half-side
-                h2.block-title
-                    span.line.small Have
-                    span.line.big The Most
-                    span.line.big Profitable
-                    span.line.big Showcase
-                p.title-text
-                    | Automatic, quick, 24/7/365.
-                    br
-                    u E-commerce
-                    |  provides targeted marketing
-                    |  and convenience to sell goods or services 
-                    | without middleman or geographical constraints.
+                .limited-width
+                    h2.block-title
+                        span.line.small Have
+                        span.line.big The Most
+                        span.line.big Profitable
+                        span.line.big Showcase
+                    p.title-text
+                        | Automatic, quick, 24/7/365.
+                        br
+                        u E-commerce
+                        |  provides targeted marketing
+                        |  and convenience to sell goods or services 
+                        | without middleman or geographical constraints.
 </template>
 <style lang="sass" scoped>
 @import '~@/styles/config'
