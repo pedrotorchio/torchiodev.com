@@ -53,7 +53,7 @@ $border-radius: 20px
     border-top-left-radius: 0px
     background: #072c5dcf
     color: white
-    max-width: 350px
+    max-width: 400px
     box-sizing: border-box
     +lg
         width: auto
