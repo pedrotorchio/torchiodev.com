@@ -72,8 +72,7 @@ export default {
     width: $w
     height: $w * .5
     background: white
-.title-text
-    width: 450px
+
 =phone-elevation($color)
     filter: drop-shadow(7px 17px 6px #{$color})
 .phone

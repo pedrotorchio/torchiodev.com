@@ -24,8 +24,7 @@
 .inner-section
     display: flex
     align-items: center
-.title-text
-    width: 500px
+
 
 .img-section
     position: relative
