@@ -1,7 +1,7 @@
 <template lang="pug">
     section#corporate.page-section.padded
         .inner-section
-            .title-group.half-side
+            .title-group
 
                 .limited-width
                     h2.block-title
