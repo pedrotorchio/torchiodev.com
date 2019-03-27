@@ -26,34 +26,29 @@ export default {}
 </script>
 <style lang="sass" scoped>
 @import '~@/styles/config'
-
+@import '~media-query-mixins/_mixins.scss'
 #corporate
     $bg-blue: #f2f6ff
     background: radial-gradient(circle 60vw at left top, white 0%, #{$bg-blue} 100%)
 .inner-section
     height: 900px
-    max-height: 100vh
+    max-height: 95vh
+    +rMd
+        height: 800px
     display: flex
     align-items: stretch
     padding-top: $size--header-height
 .title-group
     margin-top: 100px
-    
+    +rMd
+        margin-top: 0
     .title-text, .block-title
         // width: 550px // approximated and expanded width of the word 'CUSTOMERS' ((9 letters + 1) * font-size/2)
-
-$img-height: 400px
 
 .logo-container
     position: relative
     height: 100%
-    #logo
-        width: calc(100% - #{$size--section-padding})
-        position: absolute
-        bottom: $img-height - $size--section-padding
-        left: 50%
-        transform: translateX(-50%)
-        z-index: 5
+
 .img-group
     position: absolute
     bottom: 0
@@ -63,7 +58,10 @@ $img-height: 400px
         bottom: 0
         right: 0
         z-index: 1
-        max-height: $img-height
+        max-height: 400px
+
+        +rMd
+            max-height: 300px
 </style>
 
 

@@ -55,7 +55,7 @@ $border-radius: 20px
     color: white
     max-width: 400px
     box-sizing: border-box
-    +lg
+    +xl
         width: auto
         max-width: 600px
         min-width: 350px

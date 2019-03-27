@@ -20,6 +20,8 @@
   pointer-events: none
 svg
   cursor: default
+  display: block
+  margin: 0 auto
 </style>
 
 <script>

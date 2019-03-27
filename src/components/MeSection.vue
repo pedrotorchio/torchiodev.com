@@ -9,6 +9,7 @@
 </template>
 <style lang="sass" scoped>
 @import '~@/styles/config'
+@import '~media-query-mixins/_mixins.scss'
 #me-section
     height: 400px
     background: black
@@ -28,6 +29,9 @@ $color: $color--yellow
     cursor: pointer
     display: block
     width: 500px
+    margin: 0 auto
+    +rMd
+        width: 310px
     letter-spacing: .3em
     font-weight: bold
     padding: 5px
@@ -36,6 +40,9 @@ $color: $color--yellow
     text-shadow: 3px 0px 0px black
 h3
     font-weight: 100
+    font-size: 18px
+    +rMd
+        font-size: 16px
 .btn
     border: 5px solid $color
     font-size: 48px

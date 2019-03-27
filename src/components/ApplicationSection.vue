@@ -12,7 +12,7 @@
                             h3 Age
 
                     .screen-2.mdc-elevation--z2
-                        demo-line-chart( :customers="dataset" :height="200" :width="500" :padding="10" )
+                        demo-line-chart( :customers="dataset" :height="250" :width="lineChartWidth" :padding="10" )
                         h3 Lastest Satisfaction Averages
                     .phone.img-group
                         img( src="@/assets/imgs/application/phone-big.png" )
@@ -40,6 +40,7 @@ import AgeChartMixin from './application-section/AgeChart.mixin'
 import SatisfactionChartMixin from './application-section/SatisfactionChart.mixin'
 
 import customers from './application-section/CustomerStore'
+import { rMd, max } from 'media-query-mixins/_mixins'
 
 export default {
     components: { DemoApplication },
@@ -50,7 +51,14 @@ export default {
     computed: {
         dataset() {
             return customers.getDataset()
+        },
+        lineChartWidth() {
+            const { result } = rMd(()=>250) || max(()=>500)
+            return result
         }
+    },
+    mounted() {
+
     }
 }
 </script>
@@ -65,17 +73,29 @@ export default {
     display: flex
     flex-direction: column-reverse
     align-items: center
-    +lg
+    +xl
         flex-direction: row
 
-    
+.app-section
+    padding-bottom: 300px
+    +md
+        padding-bottom: 200px
+    +xl
+        padding-bottom: 0  
 .screen-1, .screen-2
     position: relative
     margin: 50px auto
-    $w: 500px
-    width: $w
-    height: $w * .5
+    width: 500px
     background: white
+    
+    +rMd
+        width: 100%
+        height: auto
+
+    h3
+        margin: 0
+        padding: .5em
+
 
 =phone-elevation($color)
     filter: drop-shadow(7px 17px 6px #{$color})
@@ -92,12 +112,16 @@ export default {
         left: 0
 .title-group
     align-self: flex-start
-    +rLg
+    +rXl
         display: flex
         justify-content: space-between
         align-items: center
+        +rMd
+            display: block
         .title-text
             margin-left: 2em
+            +rMd
+                margin: 0
 
 .phone-screen
     height: 234px
@@ -115,6 +139,8 @@ export default {
     position: absolute
     z-index: 999
     left: 240px
+    +rMd
+        left: 160px
     bottom: 20px
 
     svg
@@ -131,19 +157,18 @@ export default {
         left: 50px
 .screen-1
     display: flex
+    +rMd
+        display: block
+        #demo-bar-chart
+            +rMd
+                padding: 30px !important
     
-
-.screen-1, .screen-2
-    h3
-        position: absolute
-        bottom: 0
-        left: 0
-        margin: .5em
 .screen-2 h3
-    right: 0
-    left: auto
+    text-align: right
 .screen-half
     display: block
     position: relative
     width: 50%
+    +rMd
+        width: 100%
 </style>

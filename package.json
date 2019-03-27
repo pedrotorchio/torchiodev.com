@@ -33,7 +33,7 @@
     "faker": "^4.1.0",
     "fibers": "^3.1.1",
     "jest-puppeteer": "^4.0.0",
-    "media-query-mixins": "^3.0.4",
+    "media-query-mixins": "^3.1.0",
     "puppeteer": "^1.13.0",
     "sass": "^1.17.2",
     "sass-loader": "^7.1.0",

@@ -72,7 +72,7 @@ $transition-timing: ease-out
     .video
         display: none
         opacity: 0
-        +lg
+        +xl
             display: block
     img
         box-shadow: 0 0 0 0 rgba(black, 0)

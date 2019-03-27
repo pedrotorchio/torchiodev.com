@@ -85,6 +85,7 @@ $height: ($size--max-width - $size--section-padding)/2
         $side: $height/2
         flex: 1 0 $side
         width: $side
+        min-height: 100px
         // height: $side
         // max-width: $side
         // min-width: $side
@@ -102,9 +103,12 @@ $height: ($size--max-width - $size--section-padding)/2
     top: 50%
     left: 50%
 
+    +rMd
+        width: 100%
+
     span
         display: none
-        +lg
+        +xl
             display: inline
 
 .show-tip .tip
@@ -115,9 +119,11 @@ $height: ($size--max-width - $size--section-padding)/2
     position: relative
 .content
     display: flex
+    +rMd
+        flex-direction: column
     color: white
     min-height: $height
-    +lg
+    +xl
         min-height: initial
         height: $height
         
@@ -134,7 +140,7 @@ $height: ($size--max-width - $size--section-padding)/2
     opacity: 0
     font-weight: lighter
     padding: 50px 0
-    +lg
+    +xl
         padding: 50px 25px
 
 
@@ -148,7 +154,7 @@ $height: ($size--max-width - $size--section-padding)/2
 
     .date
         font-size: 14px
-        +lg
+        +xl
             font-size: 16px
         flex: 0 0 auto
         text-align: right
@@ -187,7 +193,7 @@ $height: ($size--max-width - $size--section-padding)/2
         
 .tags
     font-size: 14px
-    +lg
+    +xl
         width: 60%
     margin: 0 auto
     text-align: center

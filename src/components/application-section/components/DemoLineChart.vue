@@ -219,6 +219,10 @@ export default {
 }
 </script>
 <style lang="sass" scoped>
+#demo-line-chart
+    svg
+        display: block
+        margin: 0 auto
 #demo-line-chart svg::v-deep circle.pulse
     animation-name: pulse
     animation-duration: 1s

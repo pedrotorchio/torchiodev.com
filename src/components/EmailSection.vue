@@ -10,6 +10,9 @@
 
 #contact
     display: flex
+    +rMd
+        flex-direction: column
+        min-height: 8em
     justify-content: space-around
     background-color: black
     color: white
@@ -18,7 +21,7 @@
     letter-spacing: 0.25em
     padding: 10px
     font-size: 14px
-    +lg
+    +xl
         font-size: 18px
 
     span

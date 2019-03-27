@@ -59,9 +59,10 @@ $size--header-padding: 1em
     padding: 1em
     height: $size--header-height
 #logo
-    
     height: 80px
     display: block
+    +rMd
+        width: 50%
 
 
 ul
@@ -81,7 +82,7 @@ ul
         transform: scale(1)
         opacity: 1
 
-    +lg
+    +xl
         position: initial
         left: initial
         top: initial
@@ -96,7 +97,7 @@ li
     display: block
     padding: 1em
     letter-spacing: .2em
-    +lg
+    +xl
         display: inline-block
 
     a
@@ -106,7 +107,7 @@ li
 
         &:hover
             color: $color--yellow
-            +lg
+            +xl
                 color: $color--maroon
 .toggle
     display: flex
@@ -122,6 +123,6 @@ li
         width: auto
     span
         margin-right: 1em        
-    +lg
+    +xl
         display: none 
 </style>

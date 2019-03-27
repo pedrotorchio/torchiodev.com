@@ -1,6 +1,6 @@
 <template lang="pug">
     section#ecommerce-section.page-section.padded
-        .inner-section
+        .inner-section.two-sides.reverse
             .img-section.half-side
                     img( src="@/assets/imgs/ecommerce/clothes-display.png")
                     .btn.mdc-elevation--z2 Purchase
@@ -21,10 +21,6 @@
 </template>
 <style lang="sass" scoped>
 @import '~@/styles/config'
-
-.inner-section
-    display: flex
-    align-items: center
 
 
 .img-section

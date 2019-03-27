@@ -24,6 +24,8 @@
     box-sizing: border-box
 .chart-group
     position: relative
+    display: block
+    margin: 0 auto
 $color: $color--average
 ul
     display: flex

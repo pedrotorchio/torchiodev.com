@@ -32,10 +32,20 @@ $max-width: $size--max-width
 
         &.padded
             padding: $size--section-padding/2
+        &.two-sides
+            display: flex
+            align-items: center
+            flex-direction: row
+            +rMd
+                flex-direction: column
+
+            &.reverse
+                +rMd
+                    flex-direction: column-reverse
+                
 
     $small-side-width: $max-width/2
     .half-side
-        width: 50%
         padding-right: $size--section-padding/2
         flex: 0 0 auto
         box-sizing: border-box
@@ -45,8 +55,15 @@ $max-width: $size--max-width
         &:nth-of-type(2)
             padding-right: 0
             padding-left: $size--section-padding/2
+            +rMd
+                padding-left: 0
         
-        +rLg
+        width: 50%
+        +rMd
+            width: 100%
+            padding-right: 0
+
+        +rXl
             &.responsive
                 width: 100%
                 padding-left: 0
@@ -85,22 +102,25 @@ h2.block-title
     margin: $space 0
     .line
         display: block
-        margin-bottom: 8px
-        line-height: 0.8
+        // margin-bottom: 8px
+        // line-height: 0.8
+        line-height: 1
 
     .small
         font-size: 24px
         text-transform: uppercase
     .medium
         margin-top: $space
-        font-size: 32px
         letter-spacing: 4px
-        +lg
+        font-size: 28px
+        +md
+            font-size: 32px
+        +xl
             font-size: 48px
             letter-spacing: 6px
     .big
         font-size: 60px
-        +lg
+        +xl
             font-size: 100px // out of proportion so it feels 'too big'
 
         text-transform: uppercase
@@ -112,10 +132,11 @@ h2.block-title
 
 .title-text
     font-weight: lighter
-    max-width: 50vw
     width: 100%
     font-size: 18px
-    +lg
+    +md
+        max-width: 50vw
+    +xl
         font-size: 24px
 
     // transform: scaleY(1.2) translateY(1em)
