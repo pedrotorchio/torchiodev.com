@@ -88,6 +88,7 @@ ul
         background: none
         color: $color--text-dark
         margin-left: 50px
+        opacity: 1
         transform: none !important
 
 
