@@ -6,6 +6,8 @@
         span PEDRO@TORCHIODEV.COM
 </template>
 <style lang="sass" scoped>
+@import '~media-query-mixins/_mixins.scss'
+
 #contact
     display: flex
     justify-content: space-around
@@ -13,9 +15,11 @@
     color: white
     font-weight: lighter  
     text-align: center
-    font-size: 18px
     letter-spacing: 0.25em
     padding: 10px
+    font-size: 14px
+    +lg
+        font-size: 18px
 
     span
         user-select: all
