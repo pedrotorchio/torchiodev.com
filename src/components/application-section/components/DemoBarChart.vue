@@ -1,5 +1,5 @@
 <template lang="pug">
-    article#demo-bar-chart( :style="{ height: `${size}px`, padding: `${padding}px 0`, paddingRight: `${padding}px` }" )
+    article#demo-bar-chart( :style="{ padding: `${padding}px 0`, paddingRight: `${padding}px` }" )
         .chart-group( :style="{ height: `${maxSize}px` }" )
             .average
                 span.min Min: {{ageExtent[0]}}
@@ -79,9 +79,11 @@ import DemoAppChart from './DemoAppChart.mixin'
 export default {
     extends: DemoAppChart,
     props: {
-        customers: Array,
-        size: Number
+        customers: Array
     },
+    data: () => ({
+        size: 0
+    }),
     computed: {
         averageAge() {
             return Math.floor(this.customers.reduce((sum, c) => sum + c.age, 0) / this.customersCount)
@@ -132,6 +134,7 @@ export default {
         }
     },
     mounted() {
+        this.size = this.$el.clientWidth;
         this.updateChart()
     },
     watch: {

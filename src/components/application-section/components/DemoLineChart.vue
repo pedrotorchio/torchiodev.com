@@ -23,12 +23,14 @@ export default {
     props: {
         customers: Array,
         height: Number,
-        width: Number,
         padding: {
             type: Number,
             default: 0
         }
     },
+    data: () => ({
+        width: 0
+    }),
     computed: {
         generalAverageSatisfactionProgression() {
             return this.getProgression(this.customers)
@@ -203,6 +205,7 @@ export default {
         }
     },
     mounted() {
+        this.width = this.$el.clientWidth;
         this.draw()
         
     },

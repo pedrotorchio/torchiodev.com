@@ -39,9 +39,11 @@ import DemoAppChart from './DemoAppChart.mixin'
 export default {
   extends: DemoAppChart,
   props: {
-    customers: Array,
-    size: Number
+    customers: Array
   },
+  data: () => ({
+    size: 0
+  }),
   computed: {
     groupedGenders() {
       return this.customers.reduce(
@@ -169,9 +171,8 @@ export default {
     },
   },
   mounted() {
+    this.size = this.$el.clientWidth;
     this.updateChart()
-    
-
   },
   watch: {
     groupedGenders: {

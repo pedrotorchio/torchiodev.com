@@ -1,11 +1,11 @@
 <template lang="pug">
     section#me-section.page-section
         .container
-            a.btn( href="/my-resume.pdf" title="Resume updated on 13/MARCH/2019" target="_blank") 
+            a.btn( :href="`/${resume}`" :title="`Resume updated on ${resumeDate}`" target="_blank") 
                 | Who Am I 
                 span.small get my resume
-            h3.email PEDRO@TORCHIODEV.COM
-        app-video( src="/video/plasma-effect.mp4" )
+            h3.email {{ email }}
+        app-video( src="/video/plasma-effect.mp4" loop :rate=".7" )
 </template>
 <style lang="sass" scoped>
 @import '~@/styles/config'
@@ -22,17 +22,21 @@ $color: $color--yellow
     z-index: 999
     position: absolute
     cursor: initial
+    width: 500px
+    +rMd
+        width: 100%
 
 
 .btn, h3
     color: inherit
     cursor: pointer
     display: block
-    width: 500px
+    width: 100%
+    max-width: 100%
     margin: 0 auto
-    +rMd
-        width: 310px
-    letter-spacing: .3em
+    box-sizing: border-box
+    
+    letter-spacing: .2em
     font-weight: bold
     padding: 5px
     text-transform: uppercase
@@ -53,7 +57,7 @@ h3
     height: 100%
     object-fit: cover
     width: 100%
-    filter: hue-rotate(30deg) blur(8px)
+    filter: hue-rotate(30deg) blur(10px)
 .small
     display: block
     font-size: 18px
@@ -63,7 +67,13 @@ h3
 </style>
 <script>
 import AppVideo from './AppVideo'
+import contact from '@/assets/contact'
 export default {
-    components: { AppVideo }
+    components: { AppVideo },
+    data: () => ({
+        email: contact.email,
+        resume: contact.resumeFile,
+        resumeDate: contact.resumeDate
+    })
 }
 </script>

@@ -9,7 +9,7 @@
                 li
                     a( href="#portfolio" @click="shown = false" ) What I've done
                 li
-                    a( href = "/my-resume.pdf" target="_blank" @click="shown = false" ) About Me
+                    a( :href = "`/${resume}`" target="_blank" @click="shown = false" ) About Me
                 li
                     a( href = "#contact" @click="shown = false" ) Contact
 
@@ -21,9 +21,11 @@
 <script>
 import '@/components/svg/logo-vazada'
 import '@/components/svg/favicon'
+import contact from '@/assets/contact'
 export default {
     data: () => ({
-        shown: false
+        shown: false,
+        resume: contact.resumeFile
     }),
     methods: {
         toggle() {
@@ -70,7 +72,7 @@ ul
     position: fixed
     right: .8*$size--header-height
     top: .8*$size--header-height
-    background: rgba($color--text-dark, .8)
+    background: rgba($color--text-dark, .9)
     color: white
     transition-property: transform, opacity
     transition-duration: .4s
@@ -103,6 +105,8 @@ li
     a
         display: block
         height: $item-height
+        +lg
+            text-shadow: 0 0em 1px white
         line-height: $item-height
 
         &:hover
@@ -116,13 +120,16 @@ li
     position: fixed
     right: $size--header-padding
     top: $size--header-padding
-
     #favicon 
         $height: calc(#{$size--header-height} - #{2*$size--header-padding})
         height: $height
         width: auto
     span
-        margin-right: 1em        
+        text-shadow: 0.5px 0px 2px white
+        margin-right: 1em    
+        font-size: 12px
+        +md
+            font-size: 18px    
     +xl
         display: none 
 </style>

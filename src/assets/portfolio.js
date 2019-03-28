@@ -16,7 +16,8 @@ export class Work {
         return getHtml(this[field])
     }
     getImgSrc(i = 0) {
-        return `/imgs/portfolio/${this.imgsFolder}/${this.imgs[i]}`;
+        const imgName = i ? `${this.imgsFolder}/${this.imgs[i]}` : `${this.imgsFolder}.jpg`
+        return `/imgs/portfolio/optmized/${imgName}`;
     }
 }
 export function makeEmptyWork() {

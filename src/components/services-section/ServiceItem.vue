@@ -13,6 +13,8 @@
 .service
     $height: 100px
     position: relative
+    +rMd
+        position: initial
     height: $height
     line-height: $height
     cursor: pointer
@@ -45,6 +47,10 @@ $border-radius: 20px
 .bubble
     position: absolute
     left: calc(100% + 1em)
+    +rMd
+        width: 100% !important
+        left: 0 !important
+        right: 0 !important
     top: 70%
     padding: 2em
     white-space: nowrap

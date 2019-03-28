@@ -82,10 +82,11 @@ $height: ($size--max-width - $size--section-padding)/2
     display: flex
     flex-wrap: wrap
     .work-item
-        $side: $height/2
-        flex: 1 0 $side
-        width: $side
+        flex: 1 0 auto
         min-height: 100px
+        width: $height/2
+        +rLg
+            width: 100%
         // height: $side
         // max-width: $side
         // min-width: $side

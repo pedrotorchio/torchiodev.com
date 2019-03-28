@@ -61,7 +61,7 @@ export default {}
         max-height: 400px
 
         +rMd
-            max-height: 300px
+            max-height: 30vh
 </style>
 
 

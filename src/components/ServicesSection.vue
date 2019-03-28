@@ -30,9 +30,18 @@ export default {
 }
 </script>
 <style lang="sass" scoped>
+@import '~media-query-mixins/_mixins.scss'
+
 #services
     overflow: visible
 ul.services
     display: flex
     justify-content: space-around
+    li
+        text-align: center
+        position: relative
+    +rSm
+        flex-direction: column
+        
+
 </style>

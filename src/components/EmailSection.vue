@@ -1,9 +1,18 @@
+<script>
+import contact from '@/assets/contact'
+export default {
+    data: () => ({
+        email: contact.email
+    })
+}
+</script>
+
 <template lang="pug">
     section#contact
         span Pedro Torchio
         span From Brazil
         span Living in Melbourne, Australia
-        span PEDRO@TORCHIODEV.COM
+        span.email {{ email }}
 </template>
 <style lang="sass" scoped>
 @import '~media-query-mixins/_mixins.scss'
@@ -27,5 +36,7 @@
     span
         user-select: all
         cursor: text
-</style>
 
+    .email
+        text-transform: uppercase
+</style>

@@ -5,10 +5,10 @@
                 .limited-width
                     .screen-1.mdc-elevation--z2
                         #pie-chart.screen-half
-                            demo-pie-chart( :size="250" :customers="dataset" )
+                            demo-pie-chart( :customers="dataset" )
                             h3 Gender
                         #bar-chart.screen-half
-                            demo-bar-chart( :size="250" :customers="dataset" )
+                            demo-bar-chart( :customers="dataset" )
                             h3 Age
 
                     .screen-2.mdc-elevation--z2
@@ -53,7 +53,7 @@ export default {
             return customers.getDataset()
         },
         lineChartWidth() {
-            const { result } = rMd(()=>250) || max(()=>500)
+            const { result } = rMd(250) || max(500)
             return result
         }
     },
@@ -141,6 +141,8 @@ export default {
     left: 240px
     +rMd
         left: 160px
+    +rMd
+        left: 130px
     bottom: 20px
 
     svg
@@ -162,6 +164,8 @@ export default {
         #demo-bar-chart
             +rMd
                 padding: 30px !important
+            +rSm
+                padding: 10px !important
     
 .screen-2 h3
     text-align: right
