@@ -14,19 +14,30 @@
                         br
                         u Be available full time.
                     
-            .half-side.logo-container
-                //- svg-loader#logo( name="logo-vazada" )
             .img-group
                 img.img-pc( src="@/assets/imgs/corporate/woman-pc-2.png" )
                 
 </template>
 <script>
 import '@/components/svg/logo-vazada'
-export default {}
+import { observeElementInViewport } from 'observe-element-in-viewport'
+
+export default {
+    mounted() {
+        const   imgGroup = document.querySelector('.img-group')
+        observeElementInViewport(
+            imgGroup, //target
+            ()=>imgGroup.classList.add('shown'), ()=>{},
+            { target: null /* window viewport */ }
+        )
+    }
+}
 </script>
 <style lang="sass" scoped>
 @import '~@/styles/config'
 @import '~media-query-mixins/_mixins.scss'
+@import '~animate-scss'
+
 #corporate
     $bg-blue: #f2f6ff
     background: radial-gradient(circle 60vw at left top, white 0%, #{$bg-blue} 100%)
@@ -53,8 +64,11 @@ export default {}
     position: absolute
     bottom: 0
     right: 0
+    height: 1px
+    width: 1px
 
     img
+        transform: translateX(-1000px)
         bottom: 0
         right: 0
         z-index: 1
@@ -62,6 +76,13 @@ export default {}
 
         +rMd
             max-height: 30vh
+
+    
+    &.shown
+        +slideInRight($function: ease-out)
+
+        img
+            transform: none
 </style>
 
 

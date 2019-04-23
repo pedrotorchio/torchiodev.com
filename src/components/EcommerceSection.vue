@@ -1,3 +1,20 @@
+<script>
+import { observeElementInViewport } from 'observe-element-in-viewport'
+
+export default {
+    mounted() {
+        const   imgSection = document.querySelector('.img-section'),
+                img = imgSection.querySelector('img');
+                
+        observeElementInViewport(
+            imgSection, //target
+            ()=>img.classList.add('shown'), ()=>{},
+            { target: null /* window viewport */ }
+        )
+    }
+}
+</script>
+
 <template lang="pug">
     section#ecommerce-section.page-section.padded
         .inner-section.two-sides.reverse
@@ -21,6 +38,7 @@
 </template>
 <style lang="sass" scoped>
 @import '~@/styles/config'
+@import '~animate-scss'
 
 
 .img-section
@@ -32,6 +50,11 @@
         z-index: 9
         width: 100%
         height: auto
+        transform: translateX(-1000px)
+
+        &.shown
+            transform: none
+            +slideInLeft($function: ease-out)
 
     .btn
         width: 250px
@@ -44,6 +67,7 @@
         text-transform: uppercase
         background: $color--maroon
         color: white
+
 
 h2.service-title
     color: $color--text-dark
