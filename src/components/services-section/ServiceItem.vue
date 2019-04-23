@@ -54,6 +54,8 @@ $border-radius: 20px
     top: 70%
     padding: 2em
     white-space: nowrap
+    +rMd
+        white-space: normal
     line-height: 1.2em
     border-radius: $border-radius
     border-top-left-radius: 0px
@@ -78,13 +80,19 @@ $border-radius: 20px
     left: initial
     right: calc(100% + 1em)
 
-
-.service.toggled, .container:hover
+=open-service
     color: $color--maroon
     .bubble
         transform: scale(1)
         opacity: 1
         z-index: 99999
+
+.service.toggled
+    +open-service
+
+
+.container:hover
+    +open-service
 
 </style>
 

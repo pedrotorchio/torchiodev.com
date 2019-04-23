@@ -1,7 +1,7 @@
 <template lang="pug">
     section#me-section.page-section
         .container
-            a.btn( :href="`/${resume}`" :title="`Resume updated on ${resumeDate}`" target="_blank") 
+            a.btn( :href="`/${resume}`" :title="`Resume updated on ${resumeDate}`" target="_blank" @click="whoAmIClick") 
                 | Who Am I 
                 span.small get my resume
             h3.email {{ email }}
@@ -66,9 +66,11 @@ h3
     cursor: text
 </style>
 <script>
+import AnalyticsMixin from './Analytics.mixin'
 import AppVideo from './AppVideo'
 import contact from '@/assets/contact'
 export default {
+    mixins: [ AnalyticsMixin ],
     components: { AppVideo },
     data: () => ({
         email: contact.email,
