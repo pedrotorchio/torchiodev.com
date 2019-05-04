@@ -5,7 +5,7 @@
             .content( :class="{ selected, 'show-tip': showTip }")
                 .half-side.description
                     p.tip
-                        span Hover to watch the use and 
+                        span Hover to watch in use and 
                         | click to see details of any work in the grid
                     .details
                         .heading
