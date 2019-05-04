@@ -84,12 +84,16 @@ $height: ($size--max-width - $size--section-padding)/2
 .grid
     display: flex
     flex-wrap: wrap
+    +rMd
+        padding-top: 50px
+
     .work-item
         flex: 1 0 auto
         min-height: 100px
         width: $height/2
         +rLg
             width: 100%
+            
         // height: $side
         // max-width: $side
         // min-width: $side
