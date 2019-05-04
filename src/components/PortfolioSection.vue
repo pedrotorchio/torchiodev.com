@@ -29,6 +29,7 @@
 </template>
 <script>
 import works, { makeEmptyWork } from '@/assets/portfolio'
+import { md } from 'media-query-mixins/_mixins';
 import WorkItem from './portfolio-section/WorkItem'
 
 export default {
@@ -62,8 +63,10 @@ export default {
                 
         },
         deselect(work){
-            if (this.selected && this.selected.title == work.title)
-                this.selected = null
+            md(()=>{
+                if (this.selected && this.selected.title == work.title)
+                    this.selected = null
+            });
         },
         isSelected(work) {
             return this.selected && this.selected.title == work.title
@@ -121,7 +124,7 @@ $height: ($size--max-width - $size--section-padding)/2
 .content
     display: flex
     +rMd
-        flex-direction: column
+        flex-direction: column-reverse
     color: white
     min-height: $height
     +xl
