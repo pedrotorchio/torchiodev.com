@@ -9,7 +9,7 @@
                         | click to see details of any work in the grid
                     .details
                         .heading
-                            .title-group
+                            .title-group( :style="{ maxWidth: `calc(100% - ${selectedFallback.date.length * 14 * (.2 + 1/2) }px)` }" )
                                 h3.title {{ selectedFallback.title  }}
                                 h4.subtitle( :class="{ separator: selectedFallback.subtitle }" ) {{ selectedFallback.subtitle }}
                             span.date {{ selectedFallback.date }}
