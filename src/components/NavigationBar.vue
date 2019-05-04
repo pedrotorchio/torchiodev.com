@@ -54,6 +54,8 @@ nav#main-nav
     position: fixed
     font-weight: lighter
     width: 100%
+    +rMd
+        overflow: visible
 $size--header-padding: 1em
 .inner-section
     display: flex
