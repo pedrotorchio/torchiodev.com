@@ -55,7 +55,7 @@ export default [
     ],[
         'woordpress', 'single-page', 'corporate', 'animation', 'vuejs', 'self-managed'
     ],[ 'landing.jpg' ], 'themintgallery'),
-    new Work('Keepup', 'Time Diary', 'Ongoing/2018', new URL('https://www.toreato.com.br/diario'), [
+    new Work('Keepup', 'Time Diary', 'Ongoing', new URL('https://www.toreato.com.br/diario'), [
         'Ongoing application for tracking patients routine activities',
         "Stores patients' activities data",
         'Processes data and converts in advanced interactive visualizations',
