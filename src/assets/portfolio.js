@@ -24,7 +24,8 @@ export function makeEmptyWork() {
     return new Work('','','',null,[],[],[], '');
 }
 export default [
-    new Work('Nabuco Magazine (Temporarily offline)', null, '11/2017', new URL('http://www.revistanabuco.com.br'), [
+    new Work('Nabuco Magazine (offline)', null, '11/2017', new URL('http://www.revistanabuco.com.br'), [
+        'Broken due to later independent actions from owner',
         'Government funded blog and magazine',
         'Self managed content, with advanced layout tools',
         'Multiple authors and columns',
